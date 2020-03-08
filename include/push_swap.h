@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 22:29:27 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/05 23:44:55 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void 	ft_rrb(t_pp *b);
 int		ft_swap(t_pp *data);
 void	ft_sa(t_pp *a);
 void	ft_sb(t_pp *b);
+
 int 	cleanall(t_pp data[2], char **av, int control);
 int		ft_atoi_pw(const char *str, int *num);
+int		is_ascending(int *stk0, int total);
+
 /*
 ** functions for printing table of *int
 ** File(s): tools_print.c

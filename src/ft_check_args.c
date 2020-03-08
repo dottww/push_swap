@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 22:50:03 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/06 00:14:13 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int ft_atoi_pw(const char *str, int *num)
 
 int init_tpp(t_pp data[2], int total)
 {
-	data[0].start = 0;
+	// data[0].start = 0;
 	data[0].t_len = total;
 	data[0].len = total;
 
-	data[1].start = 0;
-	data[1].t_len = total;
+	// data[1].start = 0;
+	data[1].t_len = 0;
 	data[1].len = 0;
 
 	if (!(data[0].stack = (int *)malloc(sizeof(int) * (total))))
@@ -80,6 +80,18 @@ int ft_repeat(int *stk, int total)
 	return (0);
 }
 
+void	ft_strtab_free(char **av)
+{
+	int		i;
+
+	i = 0;
+	while (av[i] != NULL)
+	{	
+		free(av[i++]);
+	}
+	free(av);
+}
+
 int cleanall(t_pp data[2], char **av, int control)
 {
 	(control) ? ft_strdel(av) : 0;
@@ -107,15 +119,21 @@ int ft_check_args(int total, char **av, t_pp data[2], int i)
 			break ;
 		i++;
 	}
-	if (total != -1 || ft_repeat(data[0].stack, data[0].t_len))
+	if (total != -1 || ft_repeat(data[0].stack, data[0].len))
 	{
 		write(1, "Error\n", 6);
 		return (cleanall(data, av, control));//standard error : not INT, out of INT range, letters, duplicates
 	}
+	(control) ? ft_strtab_free(av) : 0;
 	return (1);
 }
+	// ft_strdel(&av[0]);
+	// ft_strdel(&av[1]);
+	// ft_strdel(&av[2]);
+	// ft_strdel(&av[3]);
+	// free(av);
+	// ft_strdel(av);
 	// pp_print_2stack_full(data[0], data[1]);
 		// printf("final=%d\n",total);
 		// printf("final=%d\n",total);
 		// printf("i-1=%d\n",i-1);
-		// printf("t_len=%lu\n",data[0].t_len);

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:14:27 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 21:56:25 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/05 23:54:26 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,22 @@ void	pp_print_2stack_full(t_pp data1, t_pp data2)
     int	ori;
 	int	dst;
 
-    ori = data1.t_len - data1.len;
-	dst = data2.t_len - data2.len;
+    ori = data1.t_len;
+	dst = data2.t_len;
 	printf("\n-------------------------data1-------data2\n");
 	printf("Number of int in .stack:  %zu           %zu\n", data1.t_len, data2.t_len);
 	printf("Index of start in stack:  %d           %d\n", ori, dst);
 	printf("--------------------------------------------------------data1--------------||---------------------data2-----------\n");
 	while (j < data1.t_len)
 	{
-		// if (data1.stack[j] == NULL)
-		// 	printf("[Cell adress]|[content][*content]: [%14p]|[%14p]|[%s] ||", &(data1.stack[j]), data1.stack[j], "null");
-		// else
+		if (j<data1.len)
 			printf("[Cell adress]|[content][*content]: [%14p]|[%14p]|[%4d] ||", &(data1.stack[j]), &data1.stack[j], data1.stack[j]);
-		// if (data2.stack[j] == NULL)
-		// 	printf(" [%14p]|[%14p]|[%s]\n", &(data2.stack[j]), &data2.stack[j], "null");
-		// else
+		else
+			printf("[Cell adress]|[content][*content]: [%14p]|[%14p]|[%s] ||", &(data1.stack[j]), &data1.stack[j], "null");
+		if (j<data2.len)
 			printf(" [%14p]|[%14p]|[%4d]\n", &(data2.stack[j]), &data2.stack[j], data2.stack[j]);
+		else
+			printf(" [%14p]|[%14p]|[%s]\n", &(data2.stack[j]), &data2.stack[j], "null");
 		j++;
 	}
 	printf("-------------------------------------------------------------------------||-------------------------------------\n\n");

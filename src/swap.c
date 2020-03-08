@@ -6,54 +6,25 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:56:38 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 21:23:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/05 23:46:07 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-** FUNCTION:	pp_swap
-** ARGUMENTS:	t_pp data1
-** 				t_pp data2
-** 				int i: index for data1.stack
-** 				int j: index for data2.stack
-** DESCRIPTION:
-** 		Swap the ith element of data1.stack with th jth of data2.stack.
-** RETURN:
-** 	None.
-*/
-
-void	special_swap(t_pp *data1, t_pp *data2, int i, int j)
+int		ft_swap(t_pp *data)
 {
-	int		tmp_addr;
-
-	tmp_addr = data1->stack[i];
-	data1->stack[i] = data2->stack[j];
-	data2->stack[j] = tmp_addr;
-}
-
-/*
-** FUNCTION: ft_swap
-** ARGUMENTS:	t_pp *data
-** DESCRIPTION:
-** 	...
-** RETURN: None.
-*/
-
-int	ft_swap(t_pp *data)
-{
-	int		tmp_addr;
+	int		tmp;
 	int		top;
 
-	top = data->t_len - data->len;
+	top = data->len - 1;
 	if (data->len <= 1)
 		return (0);
 	else
 	{
-		tmp_addr = data->stack[top];
-		data->stack[top] = data->stack[top + 1];
-		data->stack[top + 1] = tmp_addr;
+		tmp = data->stack[top];
+		data->stack[top] = data->stack[top - 1];
+		data->stack[top - 1] = tmp;
 		return (1);
 	}
 }
@@ -66,14 +37,6 @@ void	ft_sb(t_pp *b)
 {
 	ft_swap(b) ? write(1,"sb\n", 3) : 0;
 }
-
-/*
-** FUNCTION: ft_swap_s
-** ARGUMENTS:	t_pp *data
-** DESCRIPTION:
-** 	...
-** RETURN: None.
-*/
 
 void	ft_swap_ss(t_pp *data1, t_pp *data2)
 {

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:36:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 21:23:23 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/05 23:36:00 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int ft_rotate(t_pp *data)
 {
-	int				tmp_addr;
+	int				tmp;
 	int				top;
 	unsigned int	i;
 
@@ -22,15 +22,15 @@ int ft_rotate(t_pp *data)
 		return (0);
 	else
 	{
-		top = data->t_len - data->len;
-		tmp_addr = data->stack[top];
+		top = data->len - 1;
+		tmp = data->stack[top];
 		i = 0;
 		while (i < data->len - 1)
 		{
-			data->stack[top + i] = data->stack[top + i + 1];
+			data->stack[top - i] = data->stack[top - i - 1];
 			i++;
 		}
-		data->stack[data->t_len - 1] = tmp_addr;
+		data->stack[0] = tmp;
 		return (1);
 	}
 }
@@ -53,23 +53,23 @@ void ft_rr(t_pp *data1, t_pp *data2)
 
 int ft_rev_rotate(t_pp *data)
 {
-	int				tmp_addr;
-	int				btm;
+	int				tmp;
+	int				top;
 	unsigned int	i;
 
 	if (data->len <= 1)
 		return (0);
 	else
 	{
-		btm = data->t_len - 1;
-		tmp_addr = data->stack[btm];
+		top = data->len - 1;
+		tmp = data->stack[0];
 		i = 0;
 		while (i < data->len - 1)
 		{
-			data->stack[btm - i] = data->stack[btm - i - 1];
+			data->stack[i] = data->stack[i + 1];
 			i++;
 		}
-		data->stack[data->t_len - data->len] = tmp_addr;
+		data->stack[top] = tmp;
 		return (1);
 	}
 }
