@@ -6,15 +6,16 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/03/06 00:25:22 by weilin           ###   ########.fr        #
+#    Updated: 2020/03/09 14:48:54 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CHECKER = checker
 PUSH_SWAP = push_swap
 
-CHECK_FILES = checker
-PSH_SWP_FILES = push_swap ft_check_args push tool_print swap rotate
+CHECK_FILES = checker ft_check_args array_tool
+PSH_SWP_FILES = push_swap ft_check_args push tool_print swap rotate math \
+	array_tool
 
 CCH_DIR = cache/
 SRC_DIR = src/
@@ -31,11 +32,11 @@ CHECK_OBJ = $(addprefix $(CCH_DIR),$(addsuffix .o,$(CHECK_FILES)))
 PSH_SWP_SRC = $(addprefix $(SRC_DIR),$(addsuffix .c,$(PSH_SWP_FILES)))
 PSH_SWP_OBJ = $(addprefix $(CCH_DIR),$(addsuffix .o,$(PSH_SWP_FILES)))
 
-# all: $(CHECKER) $(PUSH_SWAP)
-all: $(PUSH_SWAP)
+all: $(CHECKER) $(PUSH_SWAP)
+# all: $(PUSH_SWAP)
 
 $(CHECKER): $(LIBFT) $(CHECK_OBJ)
-	@$(CC) $(FLAGS) -o $@ $(CHECK_OBJ)
+	@$(CC) $(FLAGS) -o $@ $(CHECK_OBJ) -L $(LIB_DIR) -lft
 
 $(PUSH_SWAP): $(LIBFT) $(PSH_SWP_OBJ)
 	@$(CC) $(FLAGS) -o $@ $(PSH_SWP_OBJ) -L $(LIB_DIR) -lft

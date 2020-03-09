@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:14:27 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 23:54:26 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/09 11:55:25 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** 	None.
 */
 
-void	pp_print_addr(t_pp data)
+void pp_print_addr(t_pp data)
 {
 	size_t i = data.start;
 	size_t countdown = data.len;
@@ -51,25 +51,25 @@ void	pp_print_addr(t_pp data)
 ** 	None.
 */
 
-void	pp_print_2stack_full(t_pp data1, t_pp data2)
+void pp_print_2stack_full(t_pp data1, t_pp data2)
 {
-	size_t	j = 0;
-    int	ori;
-	int	dst;
+	size_t j = 0;
+	int ori;
+	int dst;
 
-    ori = data1.t_len;
+	ori = data1.t_len;
 	dst = data2.t_len;
 	printf("\n-------------------------data1-------data2\n");
 	printf("Number of int in .stack:  %zu           %zu\n", data1.t_len, data2.t_len);
-	printf("Index of start in stack:  %d           %d\n", ori, dst);
+	// printf("Index of start in stack:  %d           %d\n", ori, dst);
 	printf("--------------------------------------------------------data1--------------||---------------------data2-----------\n");
 	while (j < data1.t_len)
 	{
-		if (j<data1.len)
+		if (j < data1.len)
 			printf("[Cell adress]|[content][*content]: [%14p]|[%14p]|[%4d] ||", &(data1.stack[j]), &data1.stack[j], data1.stack[j]);
 		else
 			printf("[Cell adress]|[content][*content]: [%14p]|[%14p]|[%s] ||", &(data1.stack[j]), &data1.stack[j], "null");
-		if (j<data2.len)
+		if (j < data2.t_len)
 			printf(" [%14p]|[%14p]|[%4d]\n", &(data2.stack[j]), &data2.stack[j], data2.stack[j]);
 		else
 			printf(" [%14p]|[%14p]|[%s]\n", &(data2.stack[j]), &data2.stack[j], "null");
@@ -89,20 +89,20 @@ void	pp_print_2stack_full(t_pp data1, t_pp data2)
 ** 	None.
 */
 
-void	pp_print_1stack_full(t_pp data)
+void pp_print_1stack_full(t_pp data)
 {
-	size_t	j = 0;
+	size_t j = 0;
 
 	printf("\n-------------------------data----\n");
 	printf("Number of int in .stack:  %zu\n", data.len);
-	printf("Start index in .stack  :  %d\n", data.start);
+	// printf("Start index in .stack  :  %d\n", data.start);
 	printf("--------------------------------------------------------data1---------------\n");
 	while (j < data.len)
 	{
 		// if (data.stack[j])
 		// 	printf("[Cell adress]|[content][*content]: [%p]|[%p]|[%s]\n", &(data.stack[j]), &data.stack[j], "null");
 		// else
-			printf("[Cell adress]|[content][*content]: [%p]|[%p]|[%d]\n", &(data.stack[j]), &data.stack[j], data.stack[j]);
+		printf("[Cell adress]|[content][*content]: [%p]|[%p]|[%d]\n", &(data.stack[j]), &data.stack[j], data.stack[j]);
 		j++;
 	}
 	printf("---------------------------------------------------------------------------\n\n");
@@ -118,17 +118,43 @@ void	pp_print_1stack_full(t_pp data)
 ** 	None.
 */
 
-void	pp_print_stack(t_pp data)
+void pp_print_stack(t_pp data)
 {
-	size_t i = data.start;
-	size_t countdown = data.len;
+	size_t i = 0;
+	// size_t countdown = data.len;
 
 	printf("total number of the list data.len=%zu\n", data.len);
-	printf("stack point on the stack[%d]\n", data.start);
-	while (countdown > 0)
+	// printf("stack point on the stack[%d]\n", data.start);
+	while (i < data.t_len)
 	{
-		printf("  data.pp[%zu]=%d\n", i - data.start, data.stack[i % data.len]);
+		printf("  data.pp[%zu]=%d\n", i, data.stack[i]);
 		i++;
-		countdown--;
 	}
+}
+
+void pp_print_2stack(t_pp data1, t_pp data2)
+{
+	size_t j = 0;
+	int ori;
+	int dst;
+
+	ori = data1.t_len;
+	dst = data2.t_len;
+	printf("\n-------------------------data1-------data2\n");
+	printf("Number of int in .stack:  %zu           %zu\n", data1.len, data2.len);
+	// printf("Index of start in stack:  %d           %d\n", ori, dst);
+	printf("--------------------------------------------------------data1--------------||---------------------data2-----------\n");
+	while (j < data1.t_len)
+	{
+		if (j < data1.len)
+			printf("dataA[%zu] = |[%4d] ||", j, data1.stack[j]);
+		else
+			printf("dataA[%zu] = |[%s] ||", j, "null");
+		if (j < data2.len)
+			printf("dataB[%zu] = |[%4d]\n", j, data2.stack[j]);
+		else
+			printf("dataB[%zu] = |[%s]\n", j, "null");
+		j++;
+	}
+	printf("-------------------------------------------------------------------------||-------------------------------------\n\n");
 }

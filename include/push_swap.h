@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 23:44:55 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/09 14:49:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef	struct	s_pp
 }				t_pp;
 
 int		ft_check_args(int ac, char **av, t_pp data[2], int i);
+int get_average(t_pp data[2]);
+int get_max(t_pp data[2]);
+int get_min(t_pp data[2]);
 /*
 ** functions for swapping: sa, sb, ss, pa, pb
 ** Files(s): swap.c push.c
@@ -50,13 +53,14 @@ void	ft_sb(t_pp *b);
 
 int 	cleanall(t_pp data[2], char **av, int control);
 int		ft_atoi_pw(const char *str, int *num);
-int		is_ascending(int *stk0, int total);
+int		is_ascending(int *stack, int total);
 
 /*
 ** functions for printing table of *int
 ** File(s): tools_print.c
 */
 void	pp_print_addr(t_pp data);
+void	pp_print_2stack(t_pp data1, t_pp data2);
 void	pp_print_2stack_full(t_pp data1, t_pp data2);
 void	pp_print_1stack_full(t_pp data);
 void	pp_print_stack(t_pp data);
