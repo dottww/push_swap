@@ -6,16 +6,26 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2020/03/10 20:34:34 by weilin           ###   ########.fr        #
+=======
+#    Updated: 2020/03/10 18:23:30 by weilin           ###   ########.fr        #
+>>>>>>> 55c943122b8d2072c3fa2f414c7f3460416d09a6
 #                                                                              #
 # **************************************************************************** #
 
 CHECKER = checker
 PUSH_SWAP = push_swap
 
+<<<<<<< HEAD
 CHECK_FILES = checker ft_check_args tool_array push swap rotate tool_mem
 PSH_SWP_FILES = push_swap ft_check_args push tool_print swap rotate tool_array\
 				 tool_mem
+=======
+CHECK_FILES = checker ft_check_args array_tool push swap rotate
+PSH_SWP_FILES = push_swap ft_check_args push tool_print swap rotate math \
+	array_tool
+>>>>>>> 55c943122b8d2072c3fa2f414c7f3460416d09a6
 
 CCH_DIR = cache/
 SRC_DIR = src/
