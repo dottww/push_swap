@@ -6,11 +6,30 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/09 09:01:45 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/10 20:31:53 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int is_ascending(int *stack, int total)
+{
+	int i;
+	int isacend;
+
+	i = 1;
+	isacend = 1;
+	while (i < total)
+	{
+		if ((stack[i] > stack[i - 1]))
+		{
+			isacend = 0;
+			break;
+		}
+		i++;
+	}
+	return (isacend);
+}
 
 int ft_atoi_pw(const char *str, int *num)
 {
@@ -40,26 +59,6 @@ int ft_atoi_pw(const char *str, int *num)
 	return (1);
 }
 
-int init_tpp(t_pp data[2], int total)
-{
-	// data[0].start = 0;
-	data[0].t_len = total;
-	data[0].len = total;
-
-	// data[1].start = 0;
-	data[1].t_len = total;
-	data[1].len = 0;
-
-	if (!(data[0].stack = (int *)malloc(sizeof(int) * (total))))
-		return (0);
-	if (!(data[1].stack = (int *)malloc(sizeof(int) * (total))))
-	{
-		free(data[0].stack);
-		return (0);
-	}
-	return (1);
-}
-
 int ft_repeat(int *stk, int total)
 {
 	int i;
@@ -77,26 +76,6 @@ int ft_repeat(int *stk, int total)
 		}
 		j++;
 	}
-	return (0);
-}
-
-void ft_strtab_free(char **av)
-{
-	int i;
-
-	i = 0;
-	while (av[i] != NULL)
-	{
-		free(av[i++]);
-	}
-	free(av);
-}
-
-int cleanall(t_pp data[2], char **av, int control)
-{
-	(control) ? ft_strdel(av) : 0;
-	data[0].stack ? free(data[0].stack) : 0;
-	data[1].stack ? free(data[1].stack) : 0;
 	return (0);
 }
 
@@ -126,15 +105,5 @@ int ft_check_args(int total, char **av, t_pp data[2], int i)
 		return (cleanall(data, av, control)); //standard error : not INT, out of INT range, letters, duplicates
 	}
 	(control) ? ft_strtab_free(av) : 0;
-	return (1);
+	return (is_ascending(data[0].stack, data[0].t_len) ? 0 : 1); 
 }
-// ft_strdel(&av[0]);
-// ft_strdel(&av[1]);
-// ft_strdel(&av[2]);
-// ft_strdel(&av[3]);
-// free(av);
-// ft_strdel(av);
-// pp_print_2stack_full(data[0], data[1]);
-// printf("final=%d\n",total);
-// printf("final=%d\n",total);
-// printf("i-1=%d\n",i-1);

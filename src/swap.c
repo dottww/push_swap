@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:56:38 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 23:46:07 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/10 18:29:48 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_sb(t_pp *b)
 	ft_swap(b) ? write(1,"sb\n", 3) : 0;
 }
 
-void	ft_swap_ss(t_pp *data1, t_pp *data2)
+void	ft_ss(t_pp *data1, t_pp *data2)
 {
 	ft_swap(data1);
 	ft_swap(data2);

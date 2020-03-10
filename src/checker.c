@@ -6,197 +6,129 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/09 14:48:04 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/10 20:37:10 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_check_actions(char *buf, const char **actions)
+void	ft_do_pw(int j, t_pp dt[2])
 {
-	int i;
+	(j == 0) ? ft_sa(&dt[0]) : 0;
+	(j == 1) ? ft_sb(&dt[1]) : 0;
+	(j == 2) ? ft_ss(&dt[0], &dt[1]) : 0;
+	(j == 3) ? ft_pa(&dt[0], &dt[1]) : 0;
+	(j == 4) ? ft_pb(&dt[0], &dt[1]) : 0;
+	(j == 5) ? ft_ra(&dt[0]) : 0;
+	(j == 6) ? ft_rb(&dt[1]) : 0;
+	(j == 7) ? ft_rr(&dt[0], &dt[1]) : 0;
+	(j == 8) ? ft_rra(&dt[0]) : 0;
+	(j == 9) ? ft_rrb(&dt[1]) : 0;
+	(j == 10) ? ft_rrr(&dt[0], &dt[1]) : 0;
+}
+
+int		ft_do_actions(char *s, char **all, t_pp dt[2])
+{
+	size_t	i;
+	int		j;
+	size_t	s_len;
 
 	i = 0;
-	while (actions[i])
+	s_len = ft_strlen(s);
+	while (i != s_len)
 	{
-		if (ft_strcmp(buf, actions[i]) == 0)
-			break;
-		i++;
-	}
-	return ((i == 11) ? 0 : 1);
-}
-char *ft_strstr(const char *haystack, const char *needle)
-{
-	int i;
-	// int j = 0;
-
-	if (*needle == '\0')
-		return ((char *)haystack);
-	// while (*s)
-	// {
-	// 	if (*s == '\n')
-	// 		break;
-	// 	s++;
-	// }
-	while (*haystack)
-	{
-		if (*haystack != *needle)
-			haystack++;
-		else
+		j = 0;
+		while (j < 11)
 		{
-			i = 1;
-			while (haystack[i] && needle[i] && haystack[i] == needle[i])
-				i++;
-			if (needle[i] == '\0')
-				return ((char *)haystack);
-			else
-				haystack++;
+			if (ft_strnequ(s + i, all[j], ft_strlen(all[j])))
+			{
+				ft_do_pw(j, dt);
+				i += ft_strlen(all[j]);
+				break ;
+			}
+			j++;
 		}
-	}
-	return (NULL);
-}
-
-int ft_read_actions(const char *actions)
-{
-	char *buf;
-	int stat_arg;
-	long i;
-
-	i = 0;
-	// while (actions)
-	// {
-	// 	if(ft_strstr(actions,"sa\n") || strstr(actions,"sa\n")
-	// 		ft_strncmp(actions[i++],"sa\n", 3);
-	// 	else if(actions[i] == 'r')
-	// 	else if(actions[i] == 'p')
-	// }
-	stat_arg = 1;
-	if (!(buf = ft_memalloc(4)))
-		return (0);
-	while (stat_arg == 1)
-	{
-		read(0, buf, 4);
-		stat_arg = ft_check_actions(buf, &actions);
-		ft_bzero(buf, 4);
-	}
-	return (stat_arg);
-}
-void ft_tab_alloc(const char ***str)
-{
-	int i;
-
-	i = -1;
-	if (!((*str) = (const char **)malloc(sizeof(const char *) * 12)))
-		return;
-	while (++i <= 7)
-	{
-		if (!((*str)[i] = (const char *)malloc(sizeof(const char *) * 4)))
-		{
-			while (--i >= 0)
-				free((void *)(*str)[i]);
-			free(*str);
-			return;
-		}
-	}
-	while (++i <= 10)
-	{
-		if (!((*str)[i] = (const char *)malloc(sizeof(const char *) * 5)))
-		{
-			while (--i >= 0)
-				free((void *)(*str)[i]);
-			free(*str);
-			return;
-		}
-	}
-	(*str)[11] = NULL;
-}
-
-const char **ft_init_tab_actions(void)
-{
-	const char **actions;
-
-	ft_tab_alloc(&actions);
-	actions[0] = "sa\n";
-	actions[1] = "sb\n";
-	actions[2] = "ss\n";
-	actions[3] = "pa\n";
-	actions[4] = "pb\n";
-	actions[5] = "ra\n";
-	actions[6] = "rb\n";
-	actions[7] = "rr\n";
-	actions[8] = "rra\n";
-	actions[9] = "rrb\n";
-	actions[10] = "rrr\n";
-	return (actions);
-}
-
-int ft_islegal(char *s)
-{
-	while (*s)
-	{
-		if (*s == 's' || *s == 'p' || *s == 'r' ||
-			*s == 'a' || *s == 'b' || *s == '\n')
-			s++;
-		else
+		if (j == 11)
 			return (0);
 	}
-	return (1);
+	return ((i == s_len) ? 1 : 0);
 }
 
-char *ft_read(void)
+int		ft_islegal(char *s, char **all)
 {
-	char buff[256];
-	int total_size;
-	int size_count;
-	char *tmp;
-	char *result;
+	size_t	i;
+	int		j;
+	size_t	s_len;
 
-	result = NULL;
+	i = 0;
+	s_len = ft_strlen(s);
+	while (i != s_len)
+	{
+		j = 0;
+		while (j < 11)
+		{
+			if (ft_strnequ(s + i, all[j], ft_strlen(all[j])))
+			{
+				i += ft_strlen(all[j]);
+				break ;
+			}
+			j++;
+		}
+		if (j == 11)
+			return (0);
+	}
+	return ((i == s_len) ? 1 : 0);
+}
+
+char	*ft_read(char *actions, char **all)
+{
+	char	buff[256];
+	int		total_size;
+	int		size_count;
+	char	*tmp;
+
 	total_size = 0;
 	while ((size_count = read(0, buff, 255)) > 0)
 	{
 		total_size = total_size + size_count;
-		tmp = result;
-		if (!ft_islegal(buff))
+		tmp = actions;
+		if (!ft_islegal(buff, all))
 		{
-			ft_putstr("READ ERROR\n");
-			(tmp) ? free(tmp) : 0;
-			break;
+			(actions) ? free(actions) : 0;
+			return (NULL);
 		}
 		buff[size_count] = '\0';
-		if (!(result = (char *)malloc(sizeof(char) * (total_size + 1))))
+		if (!(actions = (char *)malloc(sizeof(char) * (total_size + 1))))
 			return (0);
-		*result = '\0';
-		(tmp) ? ft_strcpy(result, tmp) : 0;
-		ft_strcat(result, buff);
+		*actions = '\0';
+		(tmp) ? ft_strcpy(actions, tmp) : 0;
+		ft_strcat(actions, buff);
 		(tmp) ? free(tmp) : 0;
 	}
-	return ((result) ? result : NULL);
+	return (actions);
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	char *actions;
-	t_pp data[2];
-	int i;
+	char	*actions;
+	char	**all;
+	t_pp	dt[2];
+	int		i;
 
+	actions = NULL;
 	i = 1;
-	if (!ft_check_args(ac - 1, av, data, i))
+	if (!ft_check_args(ac - 1, av, dt, i) || dt[0].t_len == 0)
 		return (0);
-	if ((actions = ft_read()) != NULL)
+	all = ft_init_tab_all();
+	if ((actions = ft_read(actions, all)) && ft_do_actions(actions, all, dt))
 	{
-		ft_putstr("CHECKER READ IS LEGAL=\n|\n");
-		ft_putstr(actions);
-		ft_putstr("|\n");
-		if ((actions = ft_read()) && ft_read_actions(actions))
-		{
-			(is_ascending(data[0].stack, data[0].t_len))
-				? write(1, "OK\n", 3)
-				: write(1, "KO\n", 3);
-		}
-		else
-			write(1, "Error\n", 6);
+		(is_ascending(dt[0].stack, dt[0].t_len)) ?
+			write(1, "OK\n", 3) : write(1, "KO\n", 3);
 	}
+	else
+		write(1, "Error\n", 6);
 	(actions) ? free(actions) : 0;
+	(all) ? ft_strdel(all) : 0;
+	// system("leaks checker");
 	return (0);
 }
