@@ -6,14 +6,14 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/03/09 14:48:54 by weilin           ###   ########.fr        #
+#    Updated: 2020/03/10 18:23:30 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CHECKER = checker
 PUSH_SWAP = push_swap
 
-CHECK_FILES = checker ft_check_args array_tool
+CHECK_FILES = checker ft_check_args array_tool push swap rotate
 PSH_SWP_FILES = push_swap ft_check_args push tool_print swap rotate math \
 	array_tool
 

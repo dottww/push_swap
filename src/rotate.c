@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:36:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 23:36:00 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/10 18:27:12 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,10 @@ void ft_rra(t_pp *a)
 void ft_rrb(t_pp *b)
 {
 	ft_rev_rotate(b) ? write(1, "rrb\n", 4) : 0;
+}
+
+void	ft_rrr(t_pp *data1, t_pp *data2)
+{
+	ft_rra(data1);
+	ft_rrb(data2);
 }

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/09 14:49:30 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/10 19:16:45 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,24 +127,25 @@ void push_swap(t_pp data[2])
 
 	// pp_print_2stack(data[0], data[1]);
 	if (is_ascending(data[0].stack, data[0].t_len))
-		;
+		return ;
 		// printf("pre_OKOKOK\n");
-	// return ;
 	else if (data[0].t_len <= 5)
 	{
 		(data[0].t_len == 5) ? ft_pb(&data[0], &data[1]) : 0;
-		(data[0].t_len <= 5) ? ft_pb(&data[0], &data[1]) : 0;
+		(data[0].t_len == 5 || data[0].t_len == 4) ? ft_pb(&data[0], &data[1]) : 0;
 		if (!is_ascending(data[0].stack, data[0].len))
 			push_swap_3(data[0].stack, data);
 		// printf("not_yet\n");
 		// pp_print_2stack(data[0], data[1]);
 	}
 	else
-		;
-	if (is_ascending(data[0].stack, data[0].t_len))
-		;// printf("now_OKOKOK\n");
-	else
-		;// printf("still_not_OK\n");
+		return ;
+	// if (is_ascending(data[0].stack, data[0].t_len))
+	// 	printf("now_OKOKOK\n");
+	// else
+	// 	printf("still_not_OK\n");
+
+	
 	// ft_ra(data);
 	// ft_ra(&data[0]);
 	// ft_pb(data, data + 1);
