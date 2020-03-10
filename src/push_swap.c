@@ -6,18 +6,12 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/03/10 20:36:59 by weilin           ###   ########.fr       */
-=======
-/*   Updated: 2020/03/10 19:16:45 by weilin           ###   ########.fr       */
->>>>>>> 55c943122b8d2072c3fa2f414c7f3460416d09a6
+/*   Updated: 2020/03/10 23:45:11 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <fcntl.h>
-
-
 
 int QuickSortOnce(int *a, int low, int high, t_pp data[2])
 {
@@ -104,6 +98,7 @@ int get_medium(t_pp data[2])
 		return ((x1 + x2) / 2);
 	}
 }
+
 void push_swap_3(int *a, t_pp data[2])
 {
 	// int *a;
@@ -148,10 +143,6 @@ void push_swap(t_pp data[2])
 	// 	printf("now_OKOKOK\n");
 	// else
 	// 	printf("still_not_OK\n");
-<<<<<<< HEAD
-=======
-
->>>>>>> 55c943122b8d2072c3fa2f414c7f3460416d09a6
 	
 	// ft_ra(data);
 	// ft_ra(&data[0]);
