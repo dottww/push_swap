@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:36:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/10 18:27:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 00:10:33 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ int ft_rotate(t_pp *data)
 	}
 }
 
-void ft_ra(t_pp *a)
+void ft_ra(t_pp *data)
 {
-	ft_rotate(a) ? write(1, "ra\n", 3) : 0;
+	ft_rotate(data) ? write(1, "ra\n", 3) : 0;
 }
 
-void ft_rb(t_pp *b)
+void ft_rb(t_pp *data)
 {
-	ft_rotate(b) ? write(1, "rb\n", 3) : 0;
+	ft_rotate(data + 1) ? write(1, "rb\n", 3) : 0;
 }
 
-void ft_rr(t_pp *data1, t_pp *data2)
+void ft_rr(t_pp *data)
 {
-	ft_ra(data1);
-	ft_rb(data2);
+	ft_ra(data);
+	ft_rb(data);
 }
 
 int ft_rev_rotate(t_pp *data)
@@ -74,18 +74,18 @@ int ft_rev_rotate(t_pp *data)
 	}
 }
 
-void ft_rra(t_pp *a)
+void ft_rra(t_pp *data)
 {
-	ft_rev_rotate(a) ? write(1, "rra\n", 4) : 0;
+	ft_rev_rotate(data) ? write(1, "rra\n", 4) : 0;
 }
 
-void ft_rrb(t_pp *b)
+void ft_rrb(t_pp *data)
 {
-	ft_rev_rotate(b) ? write(1, "rrb\n", 4) : 0;
+	ft_rev_rotate(data + 1) ? write(1, "rrb\n", 4) : 0;
 }
 
-void	ft_rrr(t_pp *data1, t_pp *data2)
+void	ft_rrr(t_pp *data)
 {
-	ft_rra(data1);
-	ft_rrb(data2);
+	ft_rra(data);
+	ft_rrb(data);
 }

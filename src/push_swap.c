@@ -6,14 +6,14 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/10 23:45:11 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 03:08:51 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <fcntl.h>
 
-int QuickSortOnce(int *a, int low, int high, t_pp data[2])
+int QuickSortOnce(int *a, int low, int high, t_pp *data)
 {
 	// 将首元素作为枢轴。
 	int pivot = a[low];
@@ -55,7 +55,7 @@ int QuickSortOnce(int *a, int low, int high, t_pp data[2])
 	return i;
 }
 
-void QuickSort(int *a, int low, int high, t_pp data[2])
+void QuickSort(int *a, int low, int high, t_pp *data)
 {
 	if (low >= high)
 	{
@@ -75,87 +75,100 @@ void QuickSort(int *a, int low, int high, t_pp data[2])
 	QuickSort(a, pivot + 1, high, data);
 }
 
-int get_medium(t_pp data[2])
+int get_medium(t_pp *data)
 {
-
+	int i;
 	int *a;
 	int total;
+	int median;
 
 	a = data[1].stack;
 	total = data[1].t_len;
-
 	QuickSort(a, 0, total - 1, data);
 
-	int x1 = a[total / 2];
-	int x2 = a[(total / 2) - 1];
-	// printf("x1,x2=[%d][%d]\n", x1, x2);
-	if (total % 2 != 0)
+	i = -1;
+	median = (total % 2 != 0) ? a[total / 2] : a[(total / 2) - 1];
+	while (++i < (int)data[0].t_len)
 	{
-		return x1;
+		if (data[0].stack[i] == median)
+			break;
 	}
-	else
-	{
-		return ((x1 + x2) / 2);
-	}
+	return (median);
 }
 
-void push_swap_3(int *a, t_pp data[2])
+void push_swap_5(t_pp *data, int mid)
 {
-	// int *a;
+	const int *a = data[0].stack;
 
-	// a = data[0].stack;
-	if (!((a[2] > a[0] && a[0] > a[1]) || (a[1] > a[2] && a[2] > a[0])))
-		ft_sa(&data[0]);
-	((a[2] > a[1]) && (a[2] > a[0])) ? ft_ra(&data[0]) : 0;
-	((a[0] < a[1]) && (a[0] < a[2])) ? ft_rra(&data[0]) : 0;
+	while (data[0].len - 1 > (data[0].t_len / 2))
+		(data[0].stack[data[0].len - 1] < mid) ? ft_pb(data) : ft_ra(data);
+	if (is_ascending(data[1].stack, data[1].len))
+		ft_sb(data);
+	if (!is_ascending(data[0].stack, data[0].len))
+	{
+		if (!((a[2] > a[0] && a[0] > a[1]) || (a[1] > a[2] && a[2] > a[0])))
+			ft_sa(data);
+		((a[2] > a[1]) && (a[2] > a[0])) ? ft_ra(data) : 0;
+		((a[0] < a[1]) && (a[0] < a[2])) ? ft_rra(data) : 0;
+	}
+	while (data[1].len > 0)
+		ft_pa(data);
 }
+
 void push_swap(t_pp data[2])
 {
 	// int pivot;
 	// int average;
 	// average = get_average(data);
-	// int max;
-	// int min;
-	// max = get_max(data);
+	int max;
+	int min;
+	max = get_max(data);
 	// printf("get_max=%d\n", max);
-	// min = get_min(data);
+	min = get_min(data);
 	// printf("get_min=%d\n", min);
-	// int medium;
-	// medium = get_medium(data);
+	int mid;
+	mid = get_medium(data);
 	// printf("get_medium=%d\n", medium);
 
 	// pp_print_2stack(data[0], data[1]);
 	if (is_ascending(data[0].stack, data[0].t_len))
-		return ;
-		// printf("pre_OKOKOK\n");
+		return;
+	// printf("pre_OKOKOK\n");
 	else if (data[0].t_len <= 5)
-	{
-		(data[0].t_len == 5) ? ft_pb(&data[0], &data[1]) : 0;
-		(data[0].t_len == 5 || data[0].t_len == 4) ? ft_pb(&data[0], &data[1]) : 0;
-		if (!is_ascending(data[0].stack, data[0].len))
-			push_swap_3(data[0].stack, data);
-		// printf("not_yet\n");
-		// pp_print_2stack(data[0], data[1]);
-	}
+		push_swap_5(data, mid);
+	// (data[0].t_len == 5) ? ft_pb(data) : 0;
+	// (data[0].t_len == 5 || data[0].t_len == 4) ? ft_pb(data) : 0;
+	// pp_print_2stack(data[0], data[1]);
 	else
-		return ;
+	{
+		// while (data[0].len - 1 > (data[0].t_len / 2))
+		// 	(data[0].stack[data[0].len - 1] < mid) ? ft_pb(data) : ft_ra(data);
+		// if (is_ascending(data[1].stack, data[1].len))
+		// 	ft_sb(data);
+		// if (!is_ascending(data[0].stack, data[0].len))
+		// 	push_swap_3(data[0].stack, data);
+		// while (data[1].len > 0)
+			ft_pa(data);
+	}
+	//5 4 1 3 2
+	// ft_ra(data);
+	// ft_ra(data);
+	// ft_pb(data);
+	// ft_ra(data);
+	// ft_pb(data);
+	// ft_sa(data);
+	// ft_ra(data);
+	// ft_sa(data);
+	// ft_rra(data);
+	// ft_sa(data);
+	// ft_pa(data);
+	// ft_pa(data);
+
+	// return ;
 	// if (is_ascending(data[0].stack, data[0].t_len))
 	// 	printf("now_OKOKOK\n");
 	// else
 	// 	printf("still_not_OK\n");
-	
-	// ft_ra(data);
-	// ft_ra(&data[0]);
-	// ft_pb(data, data + 1);
-	// ft_ra(&data[0]);
-	// ft_pb(&data[0], &data[1]);
-	// ft_sa(&data[0]);
-	// ft_ra(&data[0]);
-	// ft_sa(&data[0]);
-	// ft_rra(&data[0]);
-	// ft_sa(&data[0]);
-	// ft_pa(&data[0], &data[1]);
-	// ft_pa(&data[0], &data[1]);
 }
 int main(int ac, char **av)
 {

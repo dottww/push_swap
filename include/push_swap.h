@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/10 20:41:18 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 02:58:35 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,43 +29,39 @@ typedef	struct	s_pp
 }				t_pp;
 
 
-int		ft_check_args(int total, char **av, t_pp data[2], int i);
-int		get_average(t_pp data[2]);
-int 	get_max(t_pp data[2]);
-int 	get_min(t_pp data[2]);
+int		ft_check_args(int total, char **av, t_pp *data, int i);
+
 /*
 ** functions for swapping: sa, sb, ss, pa, pb
 ** Files(s): swap.c push.c
 */
-void	special_swap(t_pp *data1, t_pp *data2, int i, int j);
-void	ft_ss(t_pp *data1, t_pp *data2);
+void	ft_ss(t_pp *data);
 int		ft_push(t_pp *d_orig, t_pp *d_dest);
-void	ft_pa(t_pp *a, t_pp *b);
-void	ft_pb(t_pp *a, t_pp *b);
+void	ft_pa(t_pp *data);
+void	ft_pb(t_pp *data);
 int		ft_rotate(t_pp *data);
-void	ft_rr(t_pp *data1, t_pp *data2);
-void	ft_ra(t_pp *a);
-void	ft_rb(t_pp *b);
+void	ft_rr(t_pp *data);
+void	ft_ra(t_pp *data);
+void	ft_rb(t_pp *data);
 int		ft_rev_rotate(t_pp *data);
-void 	ft_rra(t_pp *a);
-void 	ft_rrb(t_pp *b);
-void	ft_rrr(t_pp *data1, t_pp *data2);
+void 	ft_rra(t_pp *data);
+void 	ft_rrb(t_pp *data);
+void	ft_rrr(t_pp *data);
 int		ft_swap(t_pp *data);
-void	ft_sa(t_pp *a);
-void	ft_sb(t_pp *b);
-int ft_do_actions(char *s, char **all, t_pp data[2]);
+void	ft_sa(t_pp *data);
+void	ft_sb(t_pp *data);
+int		ft_do_actions(char *s,const char **all, t_pp *data);
 
-int 	cleanall(t_pp data[2], char **av, int control);
+int 	cleanall(t_pp *data, char **av, int control);
 int		ft_atoi_pw(const char *str, int *num);
 int		is_ascending(int *stack, int total);
-char	**ft_init_tab_all(void);
+void	ft_init_tab_all(const char *all[11]);
 void	ft_strtab_free(char **av);
-int		init_tpp(t_pp data[2], int total);
-int		cleanall(t_pp data[2], char **av, int control);
-int get_average(t_pp data[2]);
-int get_max(t_pp data[2]);
-int get_min(t_pp data[2]);
-int get_max_min(t_pp data[2], int control);
+int		init_tpp(t_pp *data, int total);
+int		get_average(t_pp *data);
+int		get_max(t_pp *data);
+int		get_min(t_pp *data);
+int		get_max_min(t_pp *data, int control);
 
 /*
 ** functions for printing table of *int

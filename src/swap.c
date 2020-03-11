@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:56:38 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/10 18:29:48 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 00:08:52 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ int		ft_swap(t_pp *data)
 		return (1);
 	}
 }
-void	ft_sa(t_pp *a)
+void	ft_sa(t_pp *data)
 {
-	ft_swap(a) ? write(1,"sa\n", 3) : 0;
+	ft_swap(data) ? write(1,"sa\n", 3) : 0;
 }
 
-void	ft_sb(t_pp *b)
+void	ft_sb(t_pp *data)
 {
-	ft_swap(b) ? write(1,"sb\n", 3) : 0;
+	ft_swap(data + 1) ? write(1,"sb\n", 3) : 0;
 }
 
-void	ft_ss(t_pp *data1, t_pp *data2)
+void	ft_ss(t_pp *data)
 {
-	ft_swap(data1);
-	ft_swap(data2);
+	ft_sa(data);
+	ft_sb(data);
 }

@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 14:48:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/10 20:34:17 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 02:58:47 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int get_average(t_pp data[2])
+int get_average(t_pp *data)
 {
 	unsigned long long sum;
 	size_t i;
@@ -26,7 +26,7 @@ int get_average(t_pp data[2])
 	return (sum);
 }
 
-int get_max(t_pp data[2])
+int get_max(t_pp *data)
 {
 	// int max;
 	// max = data[0].stack[0];
@@ -44,7 +44,7 @@ int get_max(t_pp data[2])
 	return (j);
 }
 
-int get_min(t_pp data[2])
+int get_min(t_pp *data)
 {
 	// int min;
 	// min = data[0].stack[0];
@@ -62,7 +62,7 @@ int get_min(t_pp data[2])
 	return (j);
 }
 
-int get_max_min(t_pp data[2], int control)
+int get_max_min(t_pp *data, int control)
 {
 	// int min;
 	// min = data[0].stack[0];

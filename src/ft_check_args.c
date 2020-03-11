@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/10 23:45:01 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 02:55:27 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int ft_repeat(int *stk, int total)
 	return (0);
 }
 
-int ft_check_args(int total, char **av, t_pp data[2], int i)
+int ft_check_args(int total, char **av, t_pp *data, int i)
 {
 	int control;
 

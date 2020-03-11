@@ -6,28 +6,28 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/10 23:44:29 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 03:56:05 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_do_pw(int j, t_pp dt[2])
+void	ft_do_pw(int j, t_pp *data)
 {
-	(j == 0) ? ft_sa(&dt[0]) : 0;
-	(j == 1) ? ft_sb(&dt[1]) : 0;
-	(j == 2) ? ft_ss(&dt[0], &dt[1]) : 0;
-	(j == 3) ? ft_pa(&dt[0], &dt[1]) : 0;
-	(j == 4) ? ft_pb(&dt[0], &dt[1]) : 0;
-	(j == 5) ? ft_ra(&dt[0]) : 0;
-	(j == 6) ? ft_rb(&dt[1]) : 0;
-	(j == 7) ? ft_rr(&dt[0], &dt[1]) : 0;
-	(j == 8) ? ft_rra(&dt[0]) : 0;
-	(j == 9) ? ft_rrb(&dt[1]) : 0;
-	(j == 10) ? ft_rrr(&dt[0], &dt[1]) : 0;
+	(j == 0) ? ft_sa(data) : 0;
+	(j == 1) ? ft_sb(data) : 0;
+	(j == 2) ? ft_ss(data) : 0;
+	(j == 3) ? ft_pa(data) : 0;
+	(j == 4) ? ft_pb(data) : 0;
+	(j == 5) ? ft_ra(data) : 0;
+	(j == 6) ? ft_rb(data) : 0;
+	(j == 7) ? ft_rr(data) : 0;
+	(j == 8) ? ft_rra(data) : 0;
+	(j == 9) ? ft_rrb(data) : 0;
+	(j == 10) ? ft_rrr(data) : 0;
 }
 
-int		ft_do_actions(char *s, char **all, t_pp dt[2])
+int		ft_do_actions(char *s, const char **all, t_pp *dt)
 {
 	size_t	i;
 	int		j;
@@ -54,7 +54,7 @@ int		ft_do_actions(char *s, char **all, t_pp dt[2])
 	return ((i == s_len) ? 1 : 0);
 }
 
-int		ft_islegal(char *s, char **all)
+int		ft_islegal(char *s, const char *all[11])
 {
 	size_t	i;
 	int		j;
@@ -80,55 +80,45 @@ int		ft_islegal(char *s, char **all)
 	return ((i == s_len) ? 1 : 0);
 }
 
-char	*ft_read(char *actions, char **all)
+char	*ft_read(char *actions, const char **all)
 {
-	char	buff[256];
-	int		total_size;
+	char	*buff;
 	int		size_count;
-	char	*tmp;
 
-	total_size = 0;
+	if (read(0, NULL, 0) < 0 || !(buff = ft_strnew(256)))
+		return (NULL);
 	while ((size_count = read(0, buff, 255)) > 0)
 	{
-		total_size = total_size + size_count;
-		tmp = actions;
-		if (!ft_islegal(buff, all))
-		{
-			(actions) ? free(actions) : 0;
-			return (NULL);
-		}
 		buff[size_count] = '\0';
-		if (!(actions = (char *)malloc(sizeof(char) * (total_size + 1))))
-			return (0);
-		*actions = '\0';
-		(tmp) ? ft_strcpy(actions, tmp) : 0;
-		ft_strcat(actions, buff);
-		(tmp) ? free(tmp) : 0;
+		actions = (actions ? ft_strreset(actions, ft_strjoin(actions, buff))
+							: ft_strdup(buff));
+		ft_strclr(buff);
 	}
-	return (actions);
+	free(buff);
+	return (ft_islegal(actions, all) ? actions : NULL);
 }
 
 int		main(int ac, char **av)
 {
-	char	*actions;
-	char	**all;
-	t_pp	dt[2];
-	int		i;
+	char		*actions;
+	const char	*all[11];
+	t_pp		dt[2];
+	int			i;
 
 	actions = NULL;
 	i = 1;
 	if (!ft_check_args(ac - 1, av, dt, i) || dt[0].t_len == 0)
 		return (0);
-	all = ft_init_tab_all();
-	if ((actions = ft_read(actions, all)) && ft_do_actions(actions, all, dt))
+	ft_init_tab_all(all);
+	if ((actions = ft_read(actions, all)))
 	{
-		(is_ascending(dt[0].stack, dt[0].t_len)) ?
-			write(1, "OK\n", 3) : write(1, "KO\n", 3);
+		ft_do_actions(actions, all, dt);
+		(is_ascending(dt[0].stack, dt[0].t_len)) ? write(1, "OK\n", 3)
+			: write(1, "KO\n", 3);
 	}
 	else
 		write(1, "Error\n", 6);
 	(actions) ? free(actions) : 0;
-	(all) ? ft_strdel(all) : 0;
-	// system("leaks checker");
+	system("leaks checker");
 	return (0);
 }

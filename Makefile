@@ -6,14 +6,14 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/03/10 23:44:49 by weilin           ###   ########.fr        #
+#    Updated: 2020/03/11 01:51:23 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CHECKER = checker
 PUSH_SWAP = push_swap
 
-CHECK_FILES = checker ft_check_args tool_array push swap rotate tool_mem
+CHECK_FILES = checker ft_check_args tool_array push swap rotate tool_mem tool_print
 PSH_SWP_FILES = push_swap ft_check_args push tool_print swap rotate tool_array\
 				 tool_mem
 
@@ -60,7 +60,7 @@ clean:
 fclean: clean
 	$(RM) $(CHECKER)
 	$(RM) $(PUSH_SWAP)
-	make -C libft fclean
+	# make -C libft fclean
 
 re: fclean
 	$(MAKE) all
