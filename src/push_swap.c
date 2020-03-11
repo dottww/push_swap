@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/11 03:08:51 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 04:50:06 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,23 @@ int get_medium(t_pp *data)
 	int *a;
 	int total;
 	int median;
-
-	a = data[1].stack;
-	total = data[1].t_len;
-	QuickSort(a, 0, total - 1, data);
+	t_pp tmp;
+	
+	dup_tpp(data,&tmp,data[0].len);
+	
+	a = tmp.stack;
+	total = tmp.t_len;
+	
+	QuickSort(a, 0, total - 1, &tmp);
 
 	i = -1;
 	median = (total % 2 != 0) ? a[total / 2] : a[(total / 2) - 1];
-	while (++i < (int)data[0].t_len)
+	while (++i < (int)tmp.t_len)
 	{
 		if (data[0].stack[i] == median)
 			break;
 	}
+	free(tmp.stack);
 	return (median);
 }
 
@@ -113,20 +118,23 @@ void push_swap_5(t_pp *data, int mid)
 	}
 	while (data[1].len > 0)
 		ft_pa(data);
-}
+}//3 2 5 4 1, 5 4 3 2 1 
 
-void push_swap(t_pp data[2])
+void push_swap(t_pp *data)
 {
 	// int pivot;
 	// int average;
 	// average = get_average(data);
 	int max;
 	int min;
+	
 	max = get_max(data);
 	// printf("get_max=%d\n", max);
 	min = get_min(data);
 	// printf("get_min=%d\n", min);
 	int mid;
+	
+	
 	mid = get_medium(data);
 	// printf("get_medium=%d\n", medium);
 
@@ -141,13 +149,11 @@ void push_swap(t_pp data[2])
 	// pp_print_2stack(data[0], data[1]);
 	else
 	{
-		// while (data[0].len - 1 > (data[0].t_len / 2))
-		// 	(data[0].stack[data[0].len - 1] < mid) ? ft_pb(data) : ft_ra(data);
-		// if (is_ascending(data[1].stack, data[1].len))
-		// 	ft_sb(data);
-		// if (!is_ascending(data[0].stack, data[0].len))
-		// 	push_swap_3(data[0].stack, data);
-		// while (data[1].len > 0)
+		while (data[0].len > data[1].len)
+			(data[0].stack[data[0].len - 1] < mid) ? ft_pb(data) : ft_ra(data);
+		if (!is_ascending(data[0].stack, data[0].len))
+			push_swap_5(data, mid);
+		while (data[1].len > 0)
 			ft_pa(data);
 	}
 	//5 4 1 3 2
@@ -170,6 +176,8 @@ void push_swap(t_pp data[2])
 	// else
 	// 	printf("still_not_OK\n");
 }
+
+
 int main(int ac, char **av)
 {
 	int i;
@@ -183,7 +191,7 @@ int main(int ac, char **av)
 	}
 	// pp_print_2stack_full(data[0], data[1]);
 	push_swap(data);
-	// pp_print_2stack(data[0], data[1]);
+	pp_print_2stack(data[0], data[1]);
 	// pp_print_stack(data[0]);
 	cleanall(data, av, 0);
 	// system("leaks push_swap");

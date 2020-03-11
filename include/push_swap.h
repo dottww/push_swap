@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/11 02:58:35 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 04:32:19 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,12 @@ int		is_ascending(int *stack, int total);
 void	ft_init_tab_all(const char *all[11]);
 void	ft_strtab_free(char **av);
 int		init_tpp(t_pp *data, int total);
+int		dup_tpp(t_pp *ori, t_pp *dst, int total);
 int		get_average(t_pp *data);
 int		get_max(t_pp *data);
 int		get_min(t_pp *data);
 int		get_max_min(t_pp *data, int control);
+void	ft_print_int_tables(int *tab, int size);
 
 /*
 ** functions for printing table of *int

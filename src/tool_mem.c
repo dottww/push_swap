@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 20:25:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/11 02:57:19 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/11 04:35:23 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ void	ft_strtab_free(char **av)
 		free(av[i++]);
 	}
 	free(av);
+}
+
+int		dup_tpp(t_pp *ori, t_pp *dst, int total)
+{
+	dst->t_len = total;
+	dst->len = total;
+
+	if (!(dst->stack = (int *)malloc(sizeof(int) * (total))))
+		return (0);
+	while (total--)
+		dst->stack[total] = ori->stack[total];
+	return (1);
 }
 
 int		init_tpp(t_pp *data, int total)
