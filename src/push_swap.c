@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 14:27:22 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:25:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void pw_5(t_pp *data, int mid)
 	const int *a = data[0].stack;
 
 	while (data[0].len - 1 > ((int)(data[0].t_len) / 2))
-		(data[0].stack[data[0].len - 1] < mid) ? ft_pb(data) : ft_ra(data);
+		(data[0].stack[data[0].len - 1] < mid) ? ft_pb(data,1) : ft_ra(data,1);
 	if (pw_is_sorted(data[1].stack, data[1].len))
-		ft_sb(data);
+		ft_sb(data,1);
 	if (!pw_is_sorted(data[0].stack, data[0].len))
 	{
 		if (!((a[2] > a[0] && a[0] > a[1]) || (a[1] > a[2] && a[2] > a[0])))
-			ft_sa(data);
-		((a[2] > a[1]) && (a[2] > a[0])) ? ft_ra(data) : 0;
-		((a[0] < a[1]) && (a[0] < a[2])) ? ft_rra(data) : 0;
+			ft_sa(data,1);
+		((a[2] > a[1]) && (a[2] > a[0])) ? ft_ra(data,1) : 0;
+		((a[0] < a[1]) && (a[0] < a[2])) ? ft_rra(data,1) : 0;
 	}
 	while (data[1].len > 0)
-		ft_pa(data);
+		ft_pa(data,1);
 } //3 2 5 4 1, 5 4 3 2 1
 
 // void push_swap__main(t_pp *data)

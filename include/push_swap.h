@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 14:03:04 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:26:14 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,21 @@ int		ft_check_args(int total, char **av, t_pp *data, int i);
 ** functions for swapping: sa, sb, ss, pa, pb
 ** Files(s): swap.c push.c
 */
-void	ft_ss(t_pp *data);
+void	ft_ss(t_pp *data, char c);
 int		ft_push(t_pp *d_orig, t_pp *d_dest);
-void	ft_pa(t_pp *data);
-void	ft_pb(t_pp *data);
+void	ft_pa(t_pp *data, char c);
+void	ft_pb(t_pp *data, char c);
 int		ft_rotate(t_pp *data);
-void	ft_rr(t_pp *data);
-void	ft_ra(t_pp *data);
-void	ft_rb(t_pp *data);
+void	ft_rr(t_pp *data, char c);
+void	ft_ra(t_pp *data, char c);
+void	ft_rb(t_pp *data, char c);
 int		ft_rev_rotate(t_pp *data);
-void 	ft_rra(t_pp *data);
-void 	ft_rrb(t_pp *data);
-void	ft_rrr(t_pp *data);
+void 	ft_rra(t_pp *data, char c);
+void 	ft_rrb(t_pp *data, char c);
+void	ft_rrr(t_pp *data, char c);
 int		ft_swap(t_pp *data);
-void	ft_sa(t_pp *data);
-void	ft_sb(t_pp *data);
+void	ft_sa(t_pp *data, char c);
+void	ft_sb(t_pp *data, char c);
 int		ft_do_actions(char *s,const char **all, t_pp *data);
 
 int 	cleanall(t_pp *data, char **av, int control);

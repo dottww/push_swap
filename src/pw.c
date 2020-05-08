@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 00:05:26 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 15:11:31 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:31:07 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,21 @@ void pw_smart_rotate(t_pp *a, t_pp *b)
 	// if (b->g > 110)
 	// 	cc();
 	if (i <= (int)(b->len / 2))
-		ft_rrb(a);
+		ft_rrb(a, 1);
 	else
-		ft_rb(a);
+		ft_rb(a, 1);
 }
 
 void pw_get_max_of_b_to_a(t_pp *a, t_pp *b)
 {
 	if (i_max(b) == (b->len - 1))
-		ft_pa(a);
+		ft_pa(a, 1);
 	else
 	{
 		if (rank_dif_1(a, 0, b, -1) || b->stack[b->len - 1] == a[2].stack[a[2].len - 1])
 		{
-			ft_pa(a);
-			ft_ra(a);
+			ft_pa(a, 1);
+			ft_ra(a, 1);
 			// if (a->g > 500)
 			// 	ft_putstr("A5");
 		}
@@ -59,18 +59,18 @@ void pw_split_to_a(t_pp *a, t_pp *b, int avg_b, int size)
 		{
 
 			if (b->stack[b->len - 1] >= avg_b)
-				ft_pa(a);
+				ft_pa(a, 1);
 			else
 			{
 				if (rank_dif_1(a, 0, b, -1) || b->stack[b->len - 1] == a[2].stack[a[2].len - 1])
 				{
-					ft_pa(a);
-					ft_ra(a);
+					ft_pa(a, 1);
+					ft_ra(a, 1);
 					// if (a->g > 500)
 					// 	ft_putstr("A6");
 				}
 				else
-					ft_rb(a);
+					ft_rb(a, 1);
 			}
 		}
 	}
@@ -132,7 +132,6 @@ void pw_backtrack_split(t_pp *a, t_pp *b, int limit, int ctl)
 	// int u = 0;
 	c = 0;
 	avg = pw_avg_limit(a, limit);
-	avg = pw_avg_limit(a, limit);
 	// ft_putstr("avg=");
 	// ft_putnbr(avg);
 	// ft_putstr("\n");
@@ -151,12 +150,12 @@ void pw_backtrack_split(t_pp *a, t_pp *b, int limit, int ctl)
 	{
 		if (a->stack[a->len - 1] >= avg)
 		{
-			ft_ra(a);
+			ft_ra(a, 1);
 			c++;
 			(void)(ctl);
 		}
 		else
-			ft_pb(a);
+			ft_pb(a, 1);
 	}
 	// (void)b;
 	i = -1;
@@ -175,10 +174,10 @@ void pw_backtrack_split(t_pp *a, t_pp *b, int limit, int ctl)
 		// ft_putnbr(get_max_min(b, 1));
 		// ft_putstr("\n");
 		if (b->stack[b->len - 1] != get_max_min(b, 1))
-			ft_rrr(a);
+			ft_rrr(a, 1);
 		else
 		{
-			ft_rra(a);
+			ft_rra(a, 1);
 			// ft_putstr("Acc");
 			// ft_putnbr(c);
 			// ft_putstr("i");

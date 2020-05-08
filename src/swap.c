@@ -6,16 +6,16 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:56:38 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 09:28:23 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:25:22 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_swap(t_pp *data)
+int ft_swap(t_pp *data)
 {
-	int		tmp;
-	int		top;
+	int tmp;
+	int top;
 
 	top = data->len - 1;
 	if (data->len <= 1)
@@ -28,22 +28,24 @@ int		ft_swap(t_pp *data)
 		return (1);
 	}
 }
-void	ft_sa(t_pp *data)
+void ft_sa(t_pp *data, char c)
 {
-	ft_swap(data) ? write(1,"sa\n", 3) : 0;
+	ft_swap(data);
+	c ? write(1, "sa\n", 3) : 0;
 	data->g++;
 }
 
-void	ft_sb(t_pp *data)
+void ft_sb(t_pp *data, char c)
 {
-	ft_swap(&data[1]) ? write(1,"sb\n", 3) : 0;
+	ft_swap(&data[1]);
+	c ? write(1, "sb\n", 3) : 0;
 	data->g++;
 }
 
-void	ft_ss(t_pp *data)
+void ft_ss(t_pp *data, char c)
 {
-	ft_sa(data);
-	ft_sb(data);
-	data->g++;
-	data->g++;
+	ft_sa(data, 0);
+	ft_sb(data, 0);
+	c ? write(1, "ss\n", 3) : 0;
+
 }

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 03:09:24 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 14:16:46 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:31:09 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void pw_to_b(t_pp *data, int avg)
 	i = 0;
 	while (i < (int)data->t_len)
 	{
-		(avg >= data->stack[data->len - 1]) ? ft_pb(data) : ft_ra(data);
+		(avg >= data->stack[data->len - 1]) ? ft_pb(data,1) : ft_ra(data,1);
 		i++;
 	}
 }
@@ -77,11 +77,11 @@ void pw_backtrack(t_pp *a, t_pp *b, int limit)
 		// ft_putnbr(get_max_min(&a[2], 0));
 		
 		if (rank_dif_1(a, 0, a, -1))
-			ft_ra(a);
+			ft_ra(a,1);
 		else
 		// pw_is_sorted(a->stack, a->len) ? 0 : ft_pb(a);
 		{
-			ft_pb(a);
+			ft_pb(a,1);
 			// u++;
 			// ft_putstr("A77u");
 			// ft_putnbr(u);

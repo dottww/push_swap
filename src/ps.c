@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 08:47:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 14:13:22 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:29:56 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void ft_push_swap(t_pp *a, t_pp *b)
 			rank_dif_1(a, 0, a, -1) ||
 			a->stack[a->len - 1] == get_max_min(&a[2], 0)) &&
 		!pw_is_sorted(a->stack, a->len))
-		ft_ra(a);
+		ft_ra(a,1);
 	ft_push_swap(a, b);
 	ft_putstr("pw_get_size(a, max)=");
 	ft_putnbr(pw_i_next_to_min(a, b_v_max));

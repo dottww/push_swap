@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/07 04:57:31 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:28:45 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	ft_do_pw(int j, t_pp *data)
 {
-	(j == 0) ? ft_sa(data) : 0;
-	(j == 1) ? ft_sb(data) : 0;
-	(j == 2) ? ft_ss(data) : 0;
-	(j == 3) ? ft_pa(data) : 0;
-	(j == 4) ? ft_pb(data) : 0;
-	(j == 5) ? ft_ra(data) : 0;
-	(j == 6) ? ft_rb(data) : 0;
-	(j == 7) ? ft_rr(data) : 0;
-	(j == 8) ? ft_rra(data) : 0;
-	(j == 9) ? ft_rrb(data) : 0;
-	(j == 10) ? ft_rrr(data) : 0;
+	(j == 0) ? ft_sa(data,0) : 0;
+	(j == 1) ? ft_sb(data,0) : 0;
+	(j == 2) ? ft_ss(data,0) : 0;
+	(j == 3) ? ft_pa(data,0) : 0;
+	(j == 4) ? ft_pb(data,0) : 0;
+	(j == 5) ? ft_ra(data,0) : 0;
+	(j == 6) ? ft_rb(data,0) : 0;
+	(j == 7) ? ft_rr(data,0) : 0;
+	(j == 8) ? ft_rra(data,0) : 0;
+	(j == 9) ? ft_rrb(data,0) : 0;
+	(j == 10) ? ft_rrr(data,0) : 0;
 }
 
 int		ft_do_actions(char *s, const char **all, t_pp *dt)
