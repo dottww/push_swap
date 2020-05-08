@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 00:05:26 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 19:31:07 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:34:16 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,15 +100,16 @@ int pw_avg_limit(t_pp *a, int limit)
 
 void pw_backtrack_split(t_pp *a, t_pp *b, int limit, int ctl)
 {
-	ft_putstr("pw_backtrack_split & a->g=");
-	ft_putnbr(a[0].g);
-	ft_putstr("\n");
-	ft_putstr("limit=");
-	ft_putnbr(limit);
-	ft_putstr("\n");
-	ft_putstr("ctl=");
-	ft_putnbr(ctl);
-	ft_putstr("\n");
+	// ft_putstr("pw_backtrack_split & a->g=");
+	// ft_putnbr(a[0].g);
+	// ft_putstr("\n");
+	// ft_putstr("limit=");
+	// ft_putnbr(limit);
+	// ft_putstr("\n");
+	// ft_putstr("ctl=");
+	// ft_putnbr(ctl);
+	// ft_putstr("\n");
+
 	// pp_print_3stack(a[0], a[1], a[2]);
 
 	// static int cl = 0;

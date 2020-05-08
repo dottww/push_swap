@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:36:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 19:23:29 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:39:51 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,23 @@ int ft_rotate(t_pp *data)
 
 void ft_ra(t_pp *data, char c)
 {
-	ft_rotate(data);c ? write(1, "ra\n", 3) : 0;
+	ft_rotate(data);
+	c ? write(1, "ra\n", 3) : 0;
 	data->g++;
 }
 
 void ft_rb(t_pp *data, char c)
 {
-	ft_rotate(&data[1]);c ? write(1, "rb\n", 3) : 0;
+	ft_rotate(&data[1]);
+	c ? write(1, "rb\n", 3) : 0;
 	data->g++;
 }
 
 void ft_rr(t_pp *data, char c)
 {
-	ft_ra(data,0);
-	ft_rb(data,0);
-	c?write(1, "rr\n", 3) : 0;
+	ft_ra(data, 0);
+	ft_rb(data, 0);
+	c ? write(1, "rr\n", 3) : 0;
 }
 
 int ft_rev_rotate(t_pp *data)

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 08:47:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 19:29:56 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:34:54 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 // }
 void ft_push_swap(t_pp *a, t_pp *b)
 {
-	ft_putstr("ft_push_swap & a->g=");
-	ft_putnbr(a[0].g);
-	ft_putstr("\n");
+	// ft_putstr("ft_push_swap & a->g=");
+	// ft_putnbr(a[0].g);
+	// ft_putstr("\n");
 	
 	int b_v_max;
 	// if (a->g > 500)
@@ -36,9 +36,9 @@ void ft_push_swap(t_pp *a, t_pp *b)
 	// int ww=b->stack[i_max(b)];
 	// (void)ww;
 	b_v_max = get_max_min(b, 1);
-	ft_putstr("max1=");
-	ft_putnbr(b_v_max);
-	ft_putstr("\n");
+	// ft_putstr("max1=");
+	// ft_putnbr(b_v_max);
+	// ft_putstr("\n");
 	pw_split_to_a(a, b, get_average(b), b->len);
 	while (
 		(
@@ -47,14 +47,14 @@ void ft_push_swap(t_pp *a, t_pp *b)
 		!pw_is_sorted(a->stack, a->len))
 		ft_ra(a,1);
 	ft_push_swap(a, b);
-	ft_putstr("pw_get_size(a, max)=");
-	ft_putnbr(pw_i_next_to_min(a, b_v_max));
-	ft_putstr("\n");
+	// ft_putstr("pw_get_size(a, max)=");
+	// ft_putnbr(pw_i_next_to_min(a, b_v_max));
+	// ft_putstr("\n");
 	if (pw_i_next_to_min(a, b_v_max) >= 20)
 		pw_backtrack_split(a, b, b_v_max, 0);
-	ft_putstr("max2=");
-	ft_putnbr(b_v_max);
-	ft_putstr("\n");
+	// ft_putstr("max2=");
+	// ft_putnbr(b_v_max);
+	// ft_putstr("\n");
 	// static int k = 0;
 	// if (a->g == 114 && k == 0)
 	// {

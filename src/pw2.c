@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 03:09:24 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 19:31:09 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 19:34:27 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ void pw_to_b(t_pp *data, int avg)
 // }
 void pw_backtrack(t_pp *a, t_pp *b, int limit)
 {
-	ft_putstr("pw_backtrack & a->g=");
-	ft_putnbr(a[0].g);
-	ft_putstr("\n");
-	ft_putstr("limit=");
-	ft_putnbr(limit);
-	ft_putstr("\n");
+	// ft_putstr("pw_backtrack & a->g=");
+	// ft_putnbr(a[0].g);
+	// ft_putstr("\n");
+	// ft_putstr("limit=");
+	// ft_putnbr(limit);
+	// ft_putstr("\n");
+
 	// int u = 0;
 	// if (a->g > 110)
 	// 	d();
