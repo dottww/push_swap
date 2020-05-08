@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 19:47:44 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 21:22:20 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,15 @@ int main(int ac, char **av)
 	const char *all[11];
 	t_pp dt[2];
 	int i;
+	int k;
 
 	actions = NULL;
 	i = 1;
-	if (!ft_check_args(ac - 1, av, dt, i) || dt[0].t_len == 0)
+	if ((k = ft_check_args(ac - 1, av, dt, i)) != 1 || dt[0].t_len == 0)
+	{
+		(k == 2) ? ft_putstr("OK\n") : 0;
 		return (0);
+	}
 	ft_init_tab_all(all);
 	if ((actions = ft_read(actions, all)))
 	{
