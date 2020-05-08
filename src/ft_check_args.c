@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 21:12:01 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 22:37:29 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,43 @@ int ft_check_args(int total, char **av, t_pp *data, int i)
 	if (total == 1)
 	{
 		total = ft_wd(av[1], ' ');
-		av = ft_strsplit_wd(av[i--], ' ', total);
+		av = ft_strsplit_wd(av[i], ' ', total);
 		control = 1;
 	}
-	if (!init_tpp(data, total))
-		return (cleanall(data, av, control));
+		ft_putstr("total0=");
+		ft_putnbr(total);
+		ft_putstr("\n");
 	while (total--)
 	{
-		if (!(ft_atoi_pw(av[i], &data[0].stack[total])))
+		
+		if (av[i][0]=='-')
+		{ft_putstr("i=");
+		ft_putnbr(i);
+		ft_putstr("\n");
+			total--;}
+		i++;
+		ft_putstr("total loop=");
+		ft_putnbr(total);
+		ft_putstr("\n");
+		ft_putstr("i=");
+		ft_putnbr(i);
+		ft_putstr("\n");
+	}
+ft_putstr("i2=");
+		ft_putnbr(i);
+		ft_putstr("\n");
+
+	if (!init_tpp(data, total))
+		return (cleanall(data, av, control));
+	while (total++ & i)
+	{
+		if (!(ft_atoi_pw(av[i--], &data[0].stack[total])))
 			break;
 		data[1].stack[total] = data[0].stack[total];
-		i++;
-	}
-	if (total != -1 || ft_repeat(data[0].stack, data[0].len))
+	}ft_putstr("i3=");
+		ft_putnbr(i);
+		ft_putstr("\n");
+	if (i != -1 || ft_repeat(data[0].stack, data[0].len))
 	{
 		write(1, "Error\n", 6);
 		return (cleanall(data, av, control)); //standard error : not INT, out of INT range, letters, duplicates

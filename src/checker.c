@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 21:22:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 22:37:25 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int main(int ac, char **av)
 	int k;
 
 	actions = NULL;
-	i = 1;
+	i = 0;
 	if ((k = ft_check_args(ac - 1, av, dt, i)) != 1 || dt[0].t_len == 0)
 	{
 		(k == 2) ? ft_putstr("OK\n") : 0;
