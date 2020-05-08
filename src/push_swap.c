@@ -6,110 +6,22 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/11 04:50:06 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 07:27:20 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <fcntl.h>
 
-int QuickSortOnce(int *a, int low, int high, t_pp *data)
-{
-	// 将首元素作为枢轴。
-	int pivot = a[low];
-	int i = low, j = high;
-	// printf("I,pivot=%d,i=%d,j=%d\n", pivot, i, j);
-	if (!data[0].stack)
-		return (0);
-	while (i < j)
-	{
-		// 从右到左，寻找首个小于pivot的元素。
-		while (a[j] >= pivot && i < j)
-		{
-			j--;
-		}
-		// 执行到此，j已指向从右端起首个小于或等于pivot的元素。
-		// 执行替换。
-		a[i] = a[j];
-		// printf("II,i=%d,j=%d\n", i, j);
-		// pp_print_2stack_full(data[0], data[1]);
-		// 从左到右，寻找首个大于pivot的元素。
-		while (a[i] <= pivot && i < j)
-		{
-			i++;
-		}
-
-		// 执行到此，i已指向从左端起首个大于或等于pivot的元素。
-		// 执行替换。
-		a[j] = a[i];
-		// printf("III,i=%d,j=%d\n", i, j);
-		// pp_print_2stack_full(data[0], data[1]);
-	}
-
-	// 退出while循环，执行至此，必定是i=j的情况。
-	// i（或j）指向的即是枢轴的位置，定位该趟排序的枢轴并将该位置返回。
-	a[i] = pivot;
-	// printf("IV,i=%d,j=%d\n", i, j);
-	// pp_print_2stack_full(data[0], data[1]);
-
-	return i;
-}
-
-void QuickSort(int *a, int low, int high, t_pp *data)
-{
-	if (low >= high)
-	{
-		return;
-	}
-	// static int i;
-	// i++;
-	int pivot = QuickSortOnce(a, low, high, data);
-	// printf("SortOnce runtime %d low=%d, high=%d pivot=%d\n", i, low, high, pivot);
-
-	// 对枢轴的左端进行排序。
-	// printf("QuickSortIN1 runtime %d low=%d, high=%d pivot=%d\n", i, low, pivot - 1, pivot);
-	QuickSort(a, low, pivot - 1, data);
-
-	// 对枢轴的右端进行排序。
-	// printf("QuickSortIN2 runtime %d low=%d, high=%d pivot=%d\n", i, pivot + 1, high, pivot);
-	QuickSort(a, pivot + 1, high, data);
-}
-
-int get_medium(t_pp *data)
-{
-	int i;
-	int *a;
-	int total;
-	int median;
-	t_pp tmp;
-	
-	dup_tpp(data,&tmp,data[0].len);
-	
-	a = tmp.stack;
-	total = tmp.t_len;
-	
-	QuickSort(a, 0, total - 1, &tmp);
-
-	i = -1;
-	median = (total % 2 != 0) ? a[total / 2] : a[(total / 2) - 1];
-	while (++i < (int)tmp.t_len)
-	{
-		if (data[0].stack[i] == median)
-			break;
-	}
-	free(tmp.stack);
-	return (median);
-}
-
-void push_swap_5(t_pp *data, int mid)
+void pw_5(t_pp *data, int mid)
 {
 	const int *a = data[0].stack;
 
-	while (data[0].len - 1 > (data[0].t_len / 2))
+	while (data[0].len - 1 > ((int)(data[0].t_len) / 2))
 		(data[0].stack[data[0].len - 1] < mid) ? ft_pb(data) : ft_ra(data);
-	if (is_ascending(data[1].stack, data[1].len))
+	if (pw_is_sorted(data[1].stack, data[1].len))
 		ft_sb(data);
-	if (!is_ascending(data[0].stack, data[0].len))
+	if (!pw_is_sorted(data[0].stack, data[0].len))
 	{
 		if (!((a[2] > a[0] && a[0] > a[1]) || (a[1] > a[2] && a[2] > a[0])))
 			ft_sa(data);
@@ -118,82 +30,101 @@ void push_swap_5(t_pp *data, int mid)
 	}
 	while (data[1].len > 0)
 		ft_pa(data);
-}//3 2 5 4 1, 5 4 3 2 1 
+} //3 2 5 4 1, 5 4 3 2 1
 
-void push_swap(t_pp *data)
+void ft_push_swap(t_pp *a, t_pp *b)
 {
-	// int pivot;
-	// int average;
-	// average = get_average(data);
-	int max;
-	int min;
-	
-	max = get_max(data);
-	// printf("get_max=%d\n", max);
-	min = get_min(data);
-	// printf("get_min=%d\n", min);
-	int mid;
-	
-	
-	mid = get_medium(data);
-	// printf("get_medium=%d\n", medium);
+	// if (!pw_is_sorted(a->stack, 5))
+	// {
+static int x=0;
 
-	// pp_print_2stack(data[0], data[1]);
-	if (is_ascending(data[0].stack, data[0].t_len))
+x++;ft_putnbr(x);ft_putstr("_pw_to_b\n");
+	pp_print_2stack(a[0], a[1], a[2]);
+	int b_v_max;
+
+	if (b->len == 0)
 		return;
-	// printf("pre_OKOKOK\n");
+	b_v_max = get_max_min(b, 1);
+	// ft_putstr("b_v_max=");
+	// ft_putnbr(b_v_max);
+	// ft_putstr("\n");
+	// ft_putstr("before pw_split_to_a\n");
+	// pp_print_2stack(a[0], a[1], a[2]);
+
+	pw_split_to_a(a, b, get_average(b), b->len);
+	
+	// ft_putstr("after pw_split_to_a\n");
+	// ft_putstr("STK6\n");
+	// printf("now to while\n");
+	// while (
+	// 		(
+	// 		rank_dif_1(a, 0, a, -1)
+	// 		||
+	// 		a->stack[a->len - 1] == a[2].stack[a[2].len - 1]
+	// 		)
+	// 		&& !pw_is_sorted(a->stack, a->len)
+	// 	)
+	// 	ft_ra(a);
+	pp_print_2stack(a[0], a[1], a[2]);
+	// ft_putstr("STK7\n");
+	// ft_push_swap(a, b);
+	// ft_putstr("b_v_max2=");
+	// ft_putnbr(b_v_max);
+	// ft_putstr("\n");
+	// if (pw_i_next_to_min(a, b_v_max) < 20)
+	// 	pw_backtrack_split(a, b, b_v_max);
+	// pw_backtrack(a, b, get_max_min(b, 1));
+	// }
+}
+	// {ft_putstr("YESYESYESYESYESYES\n");
+	// {ft_putstr("STK10\n");
+
+// void push_swap__main(t_pp *data)
+void ft_push_swap_backtrack(t_pp *data)
+{
+	int mid = median_rank(data);
+
+	// if (is__ascending(data->stack, data->t_len))
+	// pp_print_2stack(data[0], data[1], data[2]);
+	if (pw_is_sorted(data->stack, data->t_len))
+		return;
 	else if (data[0].t_len <= 5)
-		push_swap_5(data, mid);
-	// (data[0].t_len == 5) ? ft_pb(data) : 0;
-	// (data[0].t_len == 5 || data[0].t_len == 4) ? ft_pb(data) : 0;
-	// pp_print_2stack(data[0], data[1]);
+	{
+		pw_5(data, mid);
+		// pp_print_2stack(data[0], data[1], data[2]);
+	}
 	else
 	{
-		while (data[0].len > data[1].len)
-			(data[0].stack[data[0].len - 1] < mid) ? ft_pb(data) : ft_ra(data);
-		if (!is_ascending(data[0].stack, data[0].len))
-			push_swap_5(data, mid);
-		while (data[1].len > 0)
-			ft_pa(data);
-	}
-	//5 4 1 3 2
-	// ft_ra(data);
-	// ft_ra(data);
-	// ft_pb(data);
-	// ft_ra(data);
-	// ft_pb(data);
-	// ft_sa(data);
-	// ft_ra(data);
-	// ft_sa(data);
-	// ft_rra(data);
-	// ft_sa(data);
-	// ft_pa(data);
-	// ft_pa(data);
+		// static int x=0;
 
-	// return ;
-	// if (is_ascending(data[0].stack, data[0].t_len))
-	// 	printf("now_OKOKOK\n");
-	// else
-	// 	printf("still_not_OK\n");
+		// ft_putnbr(x);ft_putstr("_START\n");
+		pp_print_2stack(data[0], data[1], data[2]);
+		
+		
+		pw_to_b(data, get_average(data));
+		// x++;ft_putnbr(x);ft_putstr("_pw_to_b\n");
+		// pp_print_2stack(data[0], data[1], data[2]);
+
+		ft_push_swap(data, &data[1]);
+		// x++;ft_putnbr(x);ft_putstr("_ft_push_swap\n");
+		// pp_print_2stack(data[0], data[1], data[2]);
+		
+		// static int y=0;
+		// if (get_max_min(data,1) < 20)
+		// {
+		// 	y++;ft_putnbr(y);ft_putstr("{i_min<=20}\n");
+		// 	pw_backtrack_split(data, &data[1], data->stack[i_max(data)]);
+		// 	pw_backtrack_split(data, &data[1], data->stack[i_max(data)]);
+		// }
+		// x++;ft_putnbr(x);ft_putstr("_after_pw_backtrack_split\n");
+		// pp_print_2stack(data[0], data[1], data[2]);
+		
+		// pw_backtrack(data, &data[1], data->stack[i_max(data)]);
+		// x++;ft_putnbr(x);ft_putstr("_after_pw_backtrack\n");
+		
+	}
 }
 
-
-int main(int ac, char **av)
-{
-	int i;
-	t_pp data[2];
-
-	if (ac > 1)
-	{
-		i = 1;
-		if (!ft_check_args(ac - 1, av, data, i))
-			return (0);
-	}
-	// pp_print_2stack_full(data[0], data[1]);
-	push_swap(data);
-	pp_print_2stack(data[0], data[1]);
-	// pp_print_stack(data[0]);
-	cleanall(data, av, 0);
-	// system("leaks push_swap");
-	return (0);
-}
+// pp_print_2stack_full(data[0], data[1]);
+// pp_print_2stack(data[0], data[1]);
+// pp_print_stack(data[0]);

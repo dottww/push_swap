@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/11 04:40:28 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/07 04:57:31 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int		main(int ac, char **av)
 	if ((actions = ft_read(actions, all)))
 	{
 		ft_do_actions(actions, all, dt);
-		(is_ascending(dt[0].stack, dt[0].t_len)) ? ft_putstr("ALLLLLL OK\n")
+		(pw_is_sorted(dt[0].stack, dt[0].t_len)) ? ft_putstr("ALLLLLL OK\n")
 			: ft_putstr("KOOOOOOOOO\n");
 	}
 	else

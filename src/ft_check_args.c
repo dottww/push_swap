@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/11 02:55:27 by weilin           ###   ########.fr       */
+/*   Updated: 2020/03/12 01:33:55 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_ascending(int *stack, int total)
+int pw_is_sorted(int *stack, int total)
 {
 	int i;
 	int isacend;
@@ -105,5 +105,5 @@ int ft_check_args(int total, char **av, t_pp *data, int i)
 		return (cleanall(data, av, control)); //standard error : not INT, out of INT range, letters, duplicates
 	}
 	(control) ? ft_strtab_free(av) : 0;
-	return (is_ascending(data[0].stack, data[0].t_len) ? 0 : 1); 
+	return (pw_is_sorted(data[0].stack, data[0].t_len) ? 0 : 1); 
 }

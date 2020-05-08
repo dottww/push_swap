@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/03/11 01:51:23 by weilin           ###   ########.fr        #
+#    Updated: 2020/05/07 03:12:54 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ CHECKER = checker
 PUSH_SWAP = push_swap
 
 CHECK_FILES = checker ft_check_args tool_array push swap rotate tool_mem tool_print
-PSH_SWP_FILES = push_swap ft_check_args push tool_print swap rotate tool_array\
-				 tool_mem
+PSH_SWP_FILES = main push_swap ft_check_args push tool_print swap rotate pw pw2 tool_array\
+				 tool_mem 
 
 CCH_DIR = cache/
 SRC_DIR = src/
@@ -38,14 +38,14 @@ all: $(CHECKER) $(PUSH_SWAP)
 $(CHECKER): $(LIBFT) $(CHECK_OBJ)
 	@$(CC) $(FLAGS) -o $@ $(CHECK_OBJ) -L $(LIB_DIR) -lft
 
-$(PUSH_SWAP): $(LIBFT) $(PSH_SWP_OBJ)
-	@$(CC) $(FLAGS) -o $@ $(PSH_SWP_OBJ) -L $(LIB_DIR) -lft
+$(PUSH_SWAP): $(LIBFT) $(PSH_SWP_OBJ) $(INC_DIR)/push_swap.h
+	@$(CC) $(FLAGS) -o $@ $(PSH_SWP_OBJ) -L $(LIB_DIR) -lft 
 
 $(LIBFT):
 	make -C libft all
 #it will call the makefile in the destination
 
-$(CCH_DIR)%.o: $(SRC_DIR)%.c | $(CCH_DIR)
+$(CCH_DIR)%.o: $(SRC_DIR)%.c  | $(CCH_DIR)
 	$(CC) $(FLAG) -c $< -o $@
 
 $(CCH_DIR):
