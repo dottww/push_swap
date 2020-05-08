@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/05/07 03:12:54 by weilin           ###   ########.fr        #
+#    Updated: 2020/05/08 08:49:52 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ PUSH_SWAP = push_swap
 
 CHECK_FILES = checker ft_check_args tool_array push swap rotate tool_mem tool_print
 PSH_SWP_FILES = main push_swap ft_check_args push tool_print swap rotate pw pw2 tool_array\
-				 tool_mem 
+				 tool_mem ps
 
 CCH_DIR = cache/
 SRC_DIR = src/

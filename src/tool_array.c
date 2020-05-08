@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 14:48:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 04:31:37 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 14:15:06 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,16 @@ int get_max_min(t_pp *data, int control)
 	int min;
 	int max;
 
-	i = 1;
-	min = 0;
-	max = 0;
+// ft_putstr("control=");
+// ft_putnbr(control);
+// ft_putstr("\n");
+
+
+	if (data->len == 0)
+		return (0);
+	i = 0;
+	min = data[0].stack[0];
+	max = data[0].stack[0];
 	while (i < data->len)
 	{
 		if (data[0].stack[i] < min)
@@ -85,6 +92,13 @@ int get_max_min(t_pp *data, int control)
 			max = data[0].stack[i];
 		i++;
 	}
+
+// 	ft_putstr("max=");
+// ft_putnbr(max);
+// 	ft_putstr("\n");
+// 	ft_putstr("min=");
+// ft_putnbr(min);
+// 	ft_putstr("\n");
 	// ft_putstr("CALrank_min=");
 	// ft_putnbr(min);
 	// ft_putstr("\n");
@@ -242,9 +256,9 @@ void ft_print_int_tables(int *tab, int size)
 	int i;
 
 	i = 0;
+	ft_putstr("tab[");
 	while (i < size)
 	{
-		ft_putstr("tab[");
 		ft_putnbr(i);
 		ft_putstr("=");
 		ft_putnbr(tab[i]);

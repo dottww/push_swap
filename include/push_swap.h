@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 05:54:09 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 14:03:04 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 typedef	struct	s_pp
 {
-	int			start;
+	int			g;
+	// int			start;
 	int			len;
 	size_t		t_len;
 	int			*stack;
@@ -79,7 +80,7 @@ void pw_backtrack(t_pp *a, t_pp *b, int limit);
 int pw_i_next_to_min(t_pp *a, int limit);
 void pw_split_to_a(t_pp *a, t_pp *b, int avg, int size);
 void pw_to_b(t_pp *data, int avg);
-void pw_backtrack_split(t_pp *a, t_pp *b, int limit);
+void pw_backtrack_split(t_pp *a, t_pp *b, int limit, int ctl);
 // int quick_sort_once(int *a, int low, int high);
 // void quick_sort(int *a, int low, int high);
 /*
@@ -88,6 +89,7 @@ void pw_backtrack_split(t_pp *a, t_pp *b, int limit);
 */
 void	pp_print_addr(t_pp data);
 void	pp_print_2stack(t_pp data1, t_pp data2, t_pp data3);
+void pp_print_3stack(t_pp data1, t_pp data2, t_pp data3);
 void	pp_print_2stack_full(t_pp data1, t_pp data2);
 void	pp_print_1stack_full(t_pp data);
 void	pp_print_stack(t_pp data);

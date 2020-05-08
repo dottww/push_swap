@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:14:27 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/12 15:27:09 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 14:04:28 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@
 ** 	None.
 */
 
-void pp_print_addr(t_pp data)
-{
-	size_t i = data.start;
-	size_t countdown = data.len;
+// void pp_print_addr(t_pp data)
+// {
+// 	size_t i = data.start;
+// 	size_t countdown = data.len;
 
-	printf("total number of the list data.len=%d\n", data.len);
-	printf("start point on the stack[%d] -- ", data.start);
-	printf("start point address: %p\n", &data.stack[i % data.len]);
-	printf("head stack address : %p\n", &data.stack[0]);
-	while (countdown > 0)
-	{
-		printf("  address &data.pp[%zu] = %p\n", i - data.start, &data.stack[i % data.len]);
-		i++;
-		countdown--;
-	}
-}
+// 	printf("total number of the list data.len=%d\n", data.len);
+// 	printf("start point on the stack[%d] -- ", data.start);
+// 	printf("start point address: %p\n", &data.stack[i % data.len]);
+// 	printf("head stack address : %p\n", &data.stack[0]);
+// 	while (countdown > 0)
+// 	{
+// 		printf("  address &data.pp[%zu] = %p\n", i - data.start, &data.stack[i % data.len]);
+// 		i++;
+// 		countdown--;
+// 	}
+// }
 
 /*
 ** FUNCTION:	pp_print_2stack_full
@@ -161,4 +161,74 @@ void pp_print_2stack(t_pp data1, t_pp data2, t_pp data3)
 		j++;
 	}
 	printf("-------------------------------------------------------------------------||-------------------------------------\n\n");
+}
+
+void pp_print_3stack(t_pp data1, t_pp data2, t_pp data3)
+{
+	int j = 0;
+	int ori;
+	int dst;
+
+	ori = data1.t_len;
+	dst = data2.t_len;
+	ft_putstr("\n-------------------------data1-------data2\n");
+	ft_putstr("Number of int in .stack:  ");
+	ft_putnbr(data1.len);
+	ft_putstr("           ");
+	ft_putnbr(data2.len);
+	ft_putstr("\n");
+	ft_putstr("--------------------------------------------------------data1--------------||---------------------data2-----------\n");
+	while (j < (int)data1.t_len)
+	{
+		if (j < data1.len)
+		{
+			ft_putstr("dataA[");
+			ft_putnbr(j);
+			ft_putstr("] = |[");
+			ft_putnbr(data1.stack[j]);
+			ft_putstr("] || ");
+		}
+		else
+		{
+			ft_putstr("dataA[");
+			ft_putnbr(j);
+			ft_putstr("] = |[");
+			ft_putstr("null");
+			ft_putstr("] || ");
+		}
+		if (j < data2.len)
+		{
+			ft_putstr("dataB[");
+			ft_putnbr(j);
+			ft_putstr("] = |[");
+			ft_putnbr(data2.stack[j]);
+			ft_putstr("] || ");
+		}
+		else
+		{
+			ft_putstr("dataB[");
+			ft_putnbr(j);
+			ft_putstr("] = |[");
+			ft_putstr("null");
+			ft_putstr("] || ");
+		}
+		if (j < data3.len)
+			{
+			ft_putstr("dataC[");
+			ft_putnbr(j);
+			ft_putstr("] = |[");
+			ft_putnbr(data3.stack[j]);
+			ft_putstr("] || \n");
+		}
+		else
+		{
+			ft_putstr("dataC[");
+			ft_putnbr(j);
+			ft_putstr("] = |[");
+			ft_putstr("null");
+			ft_putstr("] || \n");
+		}
+		j++;
+	}
+	ft_putstr("-------------------------------------------------------------------------||-------------------------------------\n\n");
 }

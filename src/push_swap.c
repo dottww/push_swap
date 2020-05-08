@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 07:27:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/08 14:27:22 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,53 +32,6 @@ void pw_5(t_pp *data, int mid)
 		ft_pa(data);
 } //3 2 5 4 1, 5 4 3 2 1
 
-void ft_push_swap(t_pp *a, t_pp *b)
-{
-	// if (!pw_is_sorted(a->stack, 5))
-	// {
-static int x=0;
-
-x++;ft_putnbr(x);ft_putstr("_pw_to_b\n");
-	pp_print_2stack(a[0], a[1], a[2]);
-	int b_v_max;
-
-	if (b->len == 0)
-		return;
-	b_v_max = get_max_min(b, 1);
-	// ft_putstr("b_v_max=");
-	// ft_putnbr(b_v_max);
-	// ft_putstr("\n");
-	// ft_putstr("before pw_split_to_a\n");
-	// pp_print_2stack(a[0], a[1], a[2]);
-
-	pw_split_to_a(a, b, get_average(b), b->len);
-	
-	// ft_putstr("after pw_split_to_a\n");
-	// ft_putstr("STK6\n");
-	// printf("now to while\n");
-	// while (
-	// 		(
-	// 		rank_dif_1(a, 0, a, -1)
-	// 		||
-	// 		a->stack[a->len - 1] == a[2].stack[a[2].len - 1]
-	// 		)
-	// 		&& !pw_is_sorted(a->stack, a->len)
-	// 	)
-	// 	ft_ra(a);
-	pp_print_2stack(a[0], a[1], a[2]);
-	// ft_putstr("STK7\n");
-	// ft_push_swap(a, b);
-	// ft_putstr("b_v_max2=");
-	// ft_putnbr(b_v_max);
-	// ft_putstr("\n");
-	// if (pw_i_next_to_min(a, b_v_max) < 20)
-	// 	pw_backtrack_split(a, b, b_v_max);
-	// pw_backtrack(a, b, get_max_min(b, 1));
-	// }
-}
-	// {ft_putstr("YESYESYESYESYESYES\n");
-	// {ft_putstr("STK10\n");
-
 // void push_swap__main(t_pp *data)
 void ft_push_swap_backtrack(t_pp *data)
 {
@@ -98,8 +51,7 @@ void ft_push_swap_backtrack(t_pp *data)
 		// static int x=0;
 
 		// ft_putnbr(x);ft_putstr("_START\n");
-		pp_print_2stack(data[0], data[1], data[2]);
-		
+		// pp_print_2stack(data[0], data[1], data[2]);
 		
 		pw_to_b(data, get_average(data));
 		// x++;ft_putnbr(x);ft_putstr("_pw_to_b\n");
@@ -110,16 +62,16 @@ void ft_push_swap_backtrack(t_pp *data)
 		// pp_print_2stack(data[0], data[1], data[2]);
 		
 		// static int y=0;
-		// if (get_max_min(data,1) < 20)
-		// {
-		// 	y++;ft_putnbr(y);ft_putstr("{i_min<=20}\n");
-		// 	pw_backtrack_split(data, &data[1], data->stack[i_max(data)]);
-		// 	pw_backtrack_split(data, &data[1], data->stack[i_max(data)]);
-		// }
+		// y++;ft_putnbr(y);ft_putstr("{i_min<=20}\n");
+
+		if (pw_i_next_to_min(data, data->stack[i_max(data)]) >= 20)
+		{
+			pw_backtrack_split(data, &data[1], get_max_min(data, 1), 2);
+			pw_backtrack_split(data, &data[1], get_max_min(data, 1), 4);
+		}
 		// x++;ft_putnbr(x);ft_putstr("_after_pw_backtrack_split\n");
+		pw_backtrack(data, &data[1], data->stack[i_max(data)]);
 		// pp_print_2stack(data[0], data[1], data[2]);
-		
-		// pw_backtrack(data, &data[1], data->stack[i_max(data)]);
 		// x++;ft_putnbr(x);ft_putstr("_after_pw_backtrack\n");
 		
 	}
