@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 21:19:37 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/10 01:11:44 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void pw_5(t_pp *data, int mid)
 } //3 2 5 4 1, 5 4 3 2 1
 
 // void push_swap__main(t_pp *data)
-void ft_push_swap_backtrack(t_pp *data)
+void ft_push_swap_main(t_pp *data)
 {
 	int mid = median_rank(data);
 

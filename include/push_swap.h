@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/09 19:18:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/10 01:11:44 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void ft_push_swap(t_pp *a, t_pp *b);
 void pw_5(t_pp *data, int mid);
 void pw_get_max_of_b_to_a(t_pp *a, t_pp *b);
 void pw_smart_rotate(t_pp *a, t_pp *b);
-void ft_push_swap_backtrack(t_pp *data);
+void ft_push_swap_main(t_pp *data);
 void pw_backtrack(t_pp *a, t_pp *b, int limit);
 int pw_i_next_to_min(t_pp *a, int limit);
 void pw_split_to_a(t_pp *a, t_pp *b, int avg, int size);

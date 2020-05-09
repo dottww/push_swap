@@ -6,11 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/05/08 22:37:25 by weilin           ###   ########.fr       */
-=======
-/*   Updated: 2020/05/09 17:56:30 by weilin           ###   ########.fr       */
->>>>>>> d75e21b177d6a00a9274a543a2f1136954814666
+/*   Updated: 2020/05/10 01:02:32 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,28 +103,24 @@ char *ft_read(char *actions, const char **all)
 int main(int ac, char **av)
 {
 	int i;
-	int k;
 	char *actions;
 	const char *all[11];
 	t_pp dt[2];
 
 	actions = NULL;
-	i = 0;
-	if ((k = ft_check_args(ac - 1, av, dt, i)) != 1 || dt[0].t_len == 0)
-	{
-		(k == 2) ? ft_putstr("OK\n") : 0;
+	i = 1;
+	if (!ft_check_args(ac - 1, av, dt, i) || dt[0].t_len == 0)
 		return (0);
-	}
 	ft_init_tab_all(all);
 	if ((actions = ft_read(actions, all)))
 	{
 		ft_do_actions(actions, all, dt);
 		(pw_is_sorted(dt[0].stack, dt[0].t_len)) ? ft_putstr("OK\n")
 												 : ft_putstr("KO\n");
+		cleanall(dt, av, 0);
 	}
 	else
 		ft_putstr("Error\n");
 	(actions) ? free(actions) : 0;
-	// system("leaks checker");
 	return (0);
 }
