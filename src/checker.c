@@ -6,7 +6,11 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/05/08 22:37:25 by weilin           ###   ########.fr       */
+=======
+/*   Updated: 2020/05/09 17:56:30 by weilin           ###   ########.fr       */
+>>>>>>> d75e21b177d6a00a9274a543a2f1136954814666
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,24 +91,26 @@ char *ft_read(char *actions, const char **all)
 
 	if (read(0, NULL, 0) < 0 || !(buff = ft_strnew(256)))
 		return (NULL);
-	while ((size_count = read(0, buff, 255)) > 0)
+	while ((size_count = read(0, buff, 255)) >= 0)
 	{
 		buff[size_count] = '\0';
 		actions = (actions ? ft_strreset(actions, ft_strjoin(actions, buff))
 						   : ft_strdup(buff));
 		ft_strclr(buff);
+		if (!size_count)
+			break;
 	}
-	free(buff);
+	buff ? free(buff) : 0;
 	return (ft_islegal(actions, all) ? actions : NULL);
 }
 
 int main(int ac, char **av)
 {
+	int i;
+	int k;
 	char *actions;
 	const char *all[11];
 	t_pp dt[2];
-	int i;
-	int k;
 
 	actions = NULL;
 	i = 0;

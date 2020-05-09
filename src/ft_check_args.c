@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 22:37:29 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/09 22:47:40 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ ft_putstr("i2=");
 		ft_putstr("\n");
 	if (i != -1 || ft_repeat(data[0].stack, data[0].len))
 	{
-		write(1, "Error\n", 6);
+		ft_putstr("Error\n");
 		return (cleanall(data, av, control)); //standard error : not INT, out of INT range, letters, duplicates
 	}
 	(control) ? ft_strtab_free(av) : 0;

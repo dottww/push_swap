@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 19:26:14 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/09 19:18:20 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 typedef	struct	s_pp
 {
 	int			g;
-	// int			start;
 	int			len;
 	size_t		t_len;
 	int			*stack;
