@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:56:38 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 19:40:59 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/10 02:03:10 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_swap(t_pp *data)
+int		ft_swap(t_pp *data)
 {
 	int tmp;
 	int top;
@@ -28,21 +28,22 @@ int ft_swap(t_pp *data)
 		return (1);
 	}
 }
-void ft_sa(t_pp *data, char c)
+
+void	ft_sa(t_pp *data, char c)
 {
 	ft_swap(data);
 	c ? write(1, "sa\n", 3) : 0;
 	data->g++;
 }
 
-void ft_sb(t_pp *data, char c)
+void	ft_sb(t_pp *data, char c)
 {
 	ft_swap(&data[1]);
 	c ? write(1, "sb\n", 3) : 0;
 	data->g++;
 }
 
-void ft_ss(t_pp *data, char c)
+void	ft_ss(t_pp *data, char c)
 {
 	ft_sa(data, 0);
 	ft_sb(data, 0);

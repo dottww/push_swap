@@ -6,16 +6,16 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:13:05 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/08 19:39:56 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/10 02:19:38 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_push(t_pp *d_orig, t_pp *d_dest)
+int		ft_push(t_pp *d_orig, t_pp *d_dest)
 {
-	int ori;
-	int dst;
+	int	ori;
+	int	dst;
 
 	if (d_orig->len == 0)
 		return (0);
@@ -30,14 +30,14 @@ int ft_push(t_pp *d_orig, t_pp *d_dest)
 	}
 }
 
-void ft_pa(t_pp *data, char c)
+void	ft_pa(t_pp *data, char c)
 {
 	ft_push(&data[1], data);
 	c ? ft_putstr("pa\n") : 0;
 	data->g++;
 }
 
-void ft_pb(t_pp *data, char c)
+void	ft_pb(t_pp *data, char c)
 {
 	ft_push(data, &data[1]);
 	c ? write(1, "pb\n", 3) : 0;

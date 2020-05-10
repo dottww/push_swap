@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/10 01:02:32 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/10 01:58:17 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_do_pw(int j, t_pp *data)
+void	ft_do_pw(int j, t_pp *data)
 {
 	(j == 0) ? ft_sa(data, 0) : 0;
 	(j == 1) ? ft_sb(data, 0) : 0;
@@ -27,11 +27,11 @@ void ft_do_pw(int j, t_pp *data)
 	(j == 10) ? ft_rrr(data, 0) : 0;
 }
 
-int ft_do_actions(char *s, const char **all, t_pp *dt)
+int		ft_do_actions(char *s, const char **all, t_pp *dt)
 {
-	size_t i;
-	int j;
-	size_t s_len;
+	size_t	i;
+	int		j;
+	size_t	s_len;
 
 	i = 0;
 	s_len = ft_strlen(s);
@@ -44,7 +44,7 @@ int ft_do_actions(char *s, const char **all, t_pp *dt)
 			{
 				ft_do_pw(j, dt);
 				i += ft_strlen(all[j]);
-				break;
+				break ;
 			}
 			j++;
 		}
@@ -54,11 +54,11 @@ int ft_do_actions(char *s, const char **all, t_pp *dt)
 	return ((i == s_len) ? 1 : 0);
 }
 
-int ft_islegal(char *s, const char *all[11])
+int		ft_islegal(char *s, const char *all[11])
 {
-	size_t i;
-	int j;
-	size_t s_len;
+	size_t	i;
+	int		j;
+	size_t	s_len;
 
 	i = 0;
 	s_len = ft_strlen(s);
@@ -70,7 +70,7 @@ int ft_islegal(char *s, const char *all[11])
 			if (ft_strnequ(s + i, all[j], ft_strlen(all[j])))
 			{
 				i += ft_strlen(all[j]);
-				break;
+				break ;
 			}
 			j++;
 		}
@@ -80,10 +80,10 @@ int ft_islegal(char *s, const char *all[11])
 	return ((i == s_len) ? 1 : 0);
 }
 
-char *ft_read(char *actions, const char **all)
+char	*ft_read(char *actions, const char **all)
 {
-	char *buff;
-	int size_count;
+	char	*buff;
+	int		size_count;
 
 	if (read(0, NULL, 0) < 0 || !(buff = ft_strnew(256)))
 		return (NULL);
@@ -91,21 +91,21 @@ char *ft_read(char *actions, const char **all)
 	{
 		buff[size_count] = '\0';
 		actions = (actions ? ft_strreset(actions, ft_strjoin(actions, buff))
-						   : ft_strdup(buff));
+							: ft_strdup(buff));
 		ft_strclr(buff);
 		if (!size_count)
-			break;
+			break ;
 	}
 	buff ? free(buff) : 0;
 	return (ft_islegal(actions, all) ? actions : NULL);
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	int i;
-	char *actions;
-	const char *all[11];
-	t_pp dt[2];
+	int			i;
+	char		*actions;
+	const char	*all[11];
+	t_pp		dt[2];
 
 	actions = NULL;
 	i = 1;
@@ -116,7 +116,7 @@ int main(int ac, char **av)
 	{
 		ft_do_actions(actions, all, dt);
 		(pw_is_sorted(dt[0].stack, dt[0].t_len)) ? ft_putstr("OK\n")
-												 : ft_putstr("KO\n");
+												: ft_putstr("KO\n");
 		cleanall(dt, av, 0);
 	}
 	else

@@ -6,16 +6,16 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/10 01:03:19 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/10 01:59:31 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int pw_is_sorted(int *stack, int total)
+int	pw_is_sorted(int *stack, int total)
 {
-	int i;
-	int isacend;
+	int	i;
+	int	isacend;
 
 	i = 1;
 	isacend = 1;
@@ -24,18 +24,18 @@ int pw_is_sorted(int *stack, int total)
 		if ((stack[i] > stack[i - 1]))
 		{
 			isacend = 0;
-			break;
+			break ;
 		}
 		i++;
 	}
 	return (isacend);
 }
 
-int ft_atoi_pw(const char *str, int *num)
+int	ft_atoi_pw(const char *str, int *num)
 {
-	int i;
-	long nbr;
-	int sign;
+	int		i;
+	long	nbr;
+	int		sign;
 
 	i = 0;
 	nbr = 0;
@@ -59,10 +59,10 @@ int ft_atoi_pw(const char *str, int *num)
 	return (1);
 }
 
-int ft_repeat(int *stk, int total)
+int	ft_repeat(int *stk, int total)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
 	while (j < total)
@@ -79,9 +79,9 @@ int ft_repeat(int *stk, int total)
 	return (0);
 }
 
-int ft_check_args(int total, char **av, t_pp *data, int i)
+int	ft_check_args(int total, char **av, t_pp *data, int i)
 {
-	int control;
+	int	control;
 
 	control = 0;
 	if (total == 1)
@@ -95,11 +95,10 @@ int ft_check_args(int total, char **av, t_pp *data, int i)
 	while (total--)
 	{
 		if (!(ft_atoi_pw(av[i], &data[0].stack[total])))
-			break;
+			break ;
 		data[1].stack[total] = data[0].stack[total];
 		i++;
 	}
-	
 	if (total != -1 || ft_repeat(data[0].stack, data[0].len))
 	{
 		ft_putstr("Error\n");
