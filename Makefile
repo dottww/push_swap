@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/05/10 02:19:18 by weilin           ###   ########.fr        #
+#    Updated: 2020/05/10 03:36:11 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ PSH_SWP_SRC = $(addprefix $(SRC_DIR),$(addsuffix .c,$(PSH_SWP_FILES)))
 PSH_SWP_OBJ = $(addprefix $(CCH_DIR),$(addsuffix .o,$(PSH_SWP_FILES)))
 
 all: $(CHECKER) $(PUSH_SWAP)
-# all: $(PUSH_SWAP)
 
 $(CHECKER): $(LIBFT) $(CHECK_OBJ)
 	@$(CC) $(FLAGS) -o $@ $(CHECK_OBJ) -L $(LIB_DIR) -lft
@@ -61,12 +60,12 @@ clean:
 fclean: clean
 	$(RM) $(CHECKER)
 	$(RM) $(PUSH_SWAP)
-	# make -C libft fclean
+	make -C libft fclean
 
 re: fclean
 	$(MAKE) all
 
 norm:
-	norminette $(SRC) $(INC_DIR) | grep -v Norme -B1 || true
+	norminette $(SRC_DIR) $(INC_DIR) | grep -v Norme -B1 || true
 
 .PHONY: all clean fclean re norm
