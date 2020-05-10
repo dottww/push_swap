@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 20:25:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/10 00:41:05 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/10 02:10:45 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_init_tab_all(const char *all[11])
+void	ft_init_tab_all(const char *all[11])
 {
 	all[0] = ft_strdup("sa\n");
 	all[1] = ft_strdup("sb\n");
@@ -43,7 +43,6 @@ int		dup_tpp(t_pp *ori, t_pp *dst, size_t total)
 {
 	dst->t_len = total;
 	dst->len = total;
-
 	if (!(dst->stack = (int *)malloc(sizeof(int) * (total))))
 		return (0);
 	while (total--)
@@ -55,10 +54,8 @@ int		init_tpp(t_pp *data, int total)
 {
 	data[0].t_len = total;
 	data[0].len = total;
-
 	data[1].t_len = total;
 	data[1].len = 0;
-
 	if (!(data[0].stack = (int *)malloc(sizeof(int) * (total))))
 		return (0);
 	if (!(data[1].stack = (int *)malloc(sizeof(int) * (total))))

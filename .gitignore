@@ -3,7 +3,5 @@
 cache/
 checker
 push_swap
-test.sh
-analyzer.sh
 *.txt
 *.o
