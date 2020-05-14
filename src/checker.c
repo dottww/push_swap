@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/14 22:22:16 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/15 00:02:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,5 @@ int		main(int ac, char **av)
 	else
 		ft_putstr("Error\n");
 	(actions != NULL) ? free(actions) : 0;
-	system("leaks checker");
 	return (0);
 }
