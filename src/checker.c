@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/10 01:58:17 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/14 22:22:16 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		ft_islegal(char *s, const char *all[11])
 	return ((i == s_len) ? 1 : 0);
 }
 
-char	*ft_read(char *actions, const char **all)
+char	*ft_read(char *actions)
 {
 	char	*buff;
 	int		size_count;
@@ -97,7 +97,7 @@ char	*ft_read(char *actions, const char **all)
 			break ;
 	}
 	buff ? free(buff) : 0;
-	return (ft_islegal(actions, all) ? actions : NULL);
+	return (actions);
 }
 
 int		main(int ac, char **av)
@@ -112,15 +112,16 @@ int		main(int ac, char **av)
 	if (!ft_check_args(ac - 1, av, dt, i) || dt[0].t_len == 0)
 		return (0);
 	ft_init_tab_all(all);
-	if ((actions = ft_read(actions, all)))
+	if ((actions = ft_read(actions)) && ft_islegal(actions, all))
 	{
 		ft_do_actions(actions, all, dt);
-		(pw_is_sorted(dt[0].stack, dt[0].t_len)) ? ft_putstr("OK\n")
-												: ft_putstr("KO\n");
+		((int)dt[0].t_len == dt[0].len && pw_sorted(dt[0].stack, dt[0].t_len))
+		? ft_putstr("OK\n") : ft_putstr("KO\n");
 		cleanall(dt, av, 0);
 	}
 	else
 		ft_putstr("Error\n");
-	(actions) ? free(actions) : 0;
+	(actions != NULL) ? free(actions) : 0;
+	system("leaks checker");
 	return (0);
 }

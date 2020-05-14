@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/14 19:56:58 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/14 21:55:05 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	pw_5(t_pp *data, int mid)
 		while (data[0].len - 1 > ((int)(data[0].t_len) / 2))
 			(data[0].stack[data[0].len - 1] < mid)
 				? ft_pb(data, 1) : ft_ra(data, 1);
-		if (pw_is_sorted(data[1].stack, data[1].len))
+		if (pw_sorted(data[1].stack, data[1].len))
 			ft_sb(data, 1);
 	}
-	if (!pw_is_sorted(data[0].stack, data[0].len))
+	if (!pw_sorted(data[0].stack, data[0].len))
 	{
 		if (!((a[2] > a[0] && a[0] > a[1]) || (a[1] > a[2] && a[2] > a[0])))
 			ft_sa(data, 1);
@@ -45,7 +45,7 @@ void	ft_push_swap(t_pp *a, t_pp *b)
 	pw_split_to_a(a, b, get_average(b), b->len);
 	while ((rank_dif_1(a, 0, a, -1)
 			|| a->stack[a->len - 1] == get_max_min(&a[2], 0))
-			&& !pw_is_sorted(a->stack, a->len))
+			&& !pw_sorted(a->stack, a->len))
 		ft_ra(a, 1);
 	ft_push_swap(a, b);
 	if (pw_i_next_to_min(a, b_v_max) >= 20)
@@ -58,7 +58,7 @@ void	ft_push_swap_main(t_pp *data)
 	int mid;
 
 	mid = median_rank(data);
-	if (pw_is_sorted(data->stack, data->t_len))
+	if (pw_sorted(data->stack, data->t_len))
 		return ;
 	else if (data[0].t_len <= 5)
 		pw_5(data, mid);

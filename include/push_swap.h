@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/10 02:26:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/14 21:55:05 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			ft_sb(t_pp *data, char c);
 int				ft_do_actions(char *s, const char **all, t_pp *data);
 int				cleanall(t_pp *data, char **av, int control);
 int				ft_atoi_pw(const char *str, int *num);
-int				pw_is_sorted(int *stack, int total);
+int				pw_sorted(int *stack, int total);
 void			ft_init_tab_all(const char *all[11]);
 void			ft_strtab_free(char **av);
 int				init_tpp(t_pp *data, int total);
@@ -68,6 +68,5 @@ void			pw_split_to_a(t_pp *a, t_pp *b, int avg, int size);
 void			pw_to_b(t_pp *data, int avg);
 void			pw_backtrack_split(t_pp *a, t_pp *b, int limit, int ctl);
 void			ft_print_int_tables(int *tab, int size);
-void			pp_print_3stack(t_pp data1, t_pp data2, t_pp data3);
 
 #endif
