@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 20:25:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/17 22:45:55 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/17 23:32:20 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		dup_tpp(t_pp *ori, t_pp *dst, size_t total)
 	dst->len = total;
 	if (!(dst->stack = (int *)malloc(sizeof(int) * (total))))
 		return (0);
+	dst->m = 1;
 	while (total--)
 		dst->stack[total] = ori->stack[total];
 	return (1);
@@ -57,24 +58,29 @@ int		dup_tpp(t_pp *ori, t_pp *dst, size_t total)
 
 int		init_tpp(t_pp *data, int total)
 {
+	if (total == 0)
+		return (0);
 	data[0].t_len = total;
 	data[0].len = total;
 	data[1].t_len = total;
 	data[1].len = 0;
 	if (!(data[0].stack = (int *)malloc(sizeof(int) * (total))))
 		return (0);
+	data[0].m = 1;
 	if (!(data[1].stack = (int *)malloc(sizeof(int) * (total))))
 	{
 		free(data[0].stack);
 		return (0);
 	}
+	data[1].m = 1;
 	return (1);
 }
 
 int		cleanall(t_pp *data, char **av, int control)
 {
 	(control) ? ft_strtab_free(av) : 0;
-	data[0].stack ? free(data[0].stack) : 0;
-	data[1].stack ? free(data[1].stack) : 0;
+	data[0].m ? free(data[0].stack) : 0;
+	data[1].m ? free(data[1].stack) : 0;
+	data[2].m ? free(data[2].stack) : 0;
 	return (0);
 }

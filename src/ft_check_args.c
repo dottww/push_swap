@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/14 22:22:19 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/17 23:19:41 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_check_args(int total, char **av, t_pp *data, int i)
 		av = ft_strsplit_wd(av[i--], ' ', total);
 		control = 1;
 	}
-	if (!init_tpp(data, total))
+	if (total !=0 && !init_tpp(data, total))
 		return (cleanall(data, av, control));
 	while (total--)
 	{

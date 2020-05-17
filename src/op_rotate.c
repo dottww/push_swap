@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   op_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:36:00 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/10 02:00:47 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/17 23:29:47 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,12 @@ void	ft_ra(t_pp *data, char c)
 {
 	ft_rotate(data);
 	c ? write(1, "ra\n", 3) : 0;
-	data->g++;
 }
 
 void	ft_rb(t_pp *data, char c)
 {
 	ft_rotate(&data[1]);
 	c ? write(1, "rb\n", 3) : 0;
-	data->g++;
 }
 
 void	ft_rr(t_pp *data, char c)
