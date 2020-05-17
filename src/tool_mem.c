@@ -6,13 +6,15 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 20:25:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/10 02:10:45 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/17 22:45:55 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-void	ft_init_tab_all(const char *all[11])
+//void	ft_init_tab_all(const char *all[11])
+void	ft_init_tab_all(char *all[11])
 {
 	all[0] = ft_strdup("sa\n");
 	all[1] = ft_strdup("sb\n");
@@ -34,9 +36,12 @@ void	ft_strtab_free(char **av)
 	i = 0;
 	while (av[i] != NULL)
 	{
-		free(av[i++]);
+		free(av[i]);
+		av[i] = NULL;
+		i++;
 	}
 	free(av);
+	av = NULL;
 }
 
 int		dup_tpp(t_pp *ori, t_pp *dst, size_t total)
@@ -68,7 +73,7 @@ int		init_tpp(t_pp *data, int total)
 
 int		cleanall(t_pp *data, char **av, int control)
 {
-	(control) ? ft_strdel(av) : 0;
+	(control) ? ft_strtab_free(av) : 0;
 	data[0].stack ? free(data[0].stack) : 0;
 	data[1].stack ? free(data[1].stack) : 0;
 	return (0);

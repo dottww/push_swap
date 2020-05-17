@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/15 00:02:34 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/17 22:47:00 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	ft_do_pw(int j, t_pp *data)
 	(j == 10) ? ft_rrr(data, 0) : 0;
 }
 
-int		ft_do_actions(char *s, const char **all, t_pp *dt)
+//int		ft_do_actions(char *s, const char **all, t_pp *dt)
+int		ft_do_actions(char *s, char **all, t_pp *dt)
 {
 	size_t	i;
 	int		j;
@@ -54,7 +55,8 @@ int		ft_do_actions(char *s, const char **all, t_pp *dt)
 	return ((i == s_len) ? 1 : 0);
 }
 
-int		ft_islegal(char *s, const char *all[11])
+//int		ft_islegal(char *s, const char *all[11])
+int		ft_islegal(char *s, char *all[11])
 {
 	size_t	i;
 	int		j;
@@ -104,7 +106,7 @@ int		main(int ac, char **av)
 {
 	int			i;
 	char		*actions;
-	const char	*all[11];
+	char		*all[11];
 	t_pp		dt[2];
 
 	actions = NULL;
@@ -121,6 +123,9 @@ int		main(int ac, char **av)
 	}
 	else
 		ft_putstr("Error\n");
+	i = -1;
+	while (++i < 11)
+		free(all[i]);
 	(actions != NULL) ? free(actions) : 0;
 	return (0);
 }
