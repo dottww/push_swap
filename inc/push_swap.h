@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/17 23:30:16 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/17 23:43:17 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
-# include <limits.h>
+// # include <limits.h>
 
 typedef	struct	s_pp
 {

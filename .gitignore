@@ -1,11 +1,14 @@
-tmp/
-libft/libft.a
 .DS_Store
+*.out
+*.txt
+*.h.gch
+*.out.dSYM
+*.a
+tmp/
 .vscode/
 cache/
 checker
 push_swap
-*.txt
 *.o
 *.sh
 *.dSYM

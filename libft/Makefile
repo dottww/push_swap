@@ -5,101 +5,132 @@
 #                                                     +:+ +:+         +:+      #
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/09/19 21:23:36 by weilin            #+#    #+#              #
-#    Updated: 2020/03/05 20:43:47 by weilin           ###   ########.fr        #
+#    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
+#    Updated: 2020/05/18 02:27:33 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = ft_tolower.c\
-		ft_toupper.c\
-		ft_isalpha.c\
-		ft_isdigit.c\
-		ft_isalnum.c\
-		ft_isascii.c\
-		ft_isprint.c\
-		ft_isnumber.c\
-		ft_strlen.c\
-		ft_strcpy.c\
-		ft_strncpy.c\
-		ft_strcmp.c\
-		ft_strncmp.c\
-		ft_strcat.c\
-		ft_strncat.c\
-		ft_strlcat.c\
-		ft_atoi.c\
-		ft_strdup.c\
-		ft_strdup_sec.c\
-		ft_strstr.c\
-		ft_strnstr.c\
-		ft_strchr.c\
-		ft_strrchr.c\
-		ft_memset.c\
-		ft_memcpy.c\
-		ft_memccpy.c\
-		ft_memmove.c\
-		ft_memchr.c\
-		ft_memcmp.c\
-		ft_bzero.c\
-		ft_memalloc.c\
-		ft_memdel.c\
-		ft_strnew.c\
-		ft_strnew_c.c\
-		ft_strdel.c\
-		ft_strclr.c\
-		ft_striter.c\
-		ft_striteri.c\
-		ft_strmap.c\
-		ft_strmapi.c\
-		ft_strequ.c\
-		ft_strnequ.c\
-		ft_strsub.c\
-		ft_strjoin.c\
-		ft_strtrim.c\
-		ft_strsplit.c\
-		ft_strsplit_wd.c\
-		ft_itoa.c\
-		ft_putchar.c\
-		ft_putstr.c\
-		ft_putnbr.c\
-		ft_putendl.c\
-		ft_putchar_fd.c\
-		ft_putstr_fd.c\
-		ft_putnbr_fd.c\
-		ft_putendl_fd.c\
-		ft_lstnew.c\
-		ft_lstdelone.c\
-		ft_lstdel.c\
-		ft_lstadd.c\
-		ft_lstiter.c\
-		ft_lstmap.c\
-		ft_int_len.c\
-		ft_sqrt.c\
-		ft_count_if.c\
-		ft_print_words_tables.c\
-		ft_wd.c\
-		ft_strreset.c
+LIB_DIR = libft/
+LIB_FILSES = ft_tolower\
+		ft_toupper\
+		ft_isalpha\
+		ft_isdigit\
+		ft_isalnum\
+		ft_isascii\
+		ft_isprint\
+		ft_isnumber\
+		ft_strlen\
+		ft_strcpy\
+		ft_strncpy\
+		ft_strcmp\
+		ft_strncmp\
+		ft_strcat\
+		ft_strncat\
+		ft_strlcat\
+		ft_atoi\
+		ft_strdup\
+		ft_strdup_sec\
+		ft_strstr\
+		ft_strnstr\
+		ft_strchr\
+		ft_strrchr\
+		ft_memset\
+		ft_memcpy\
+		ft_memccpy\
+		ft_memmove\
+		ft_memchr\
+		ft_memcmp\
+		ft_bzero\
+		ft_memalloc\
+		ft_memdel\
+		ft_strnew\
+		ft_strnew_c\
+		ft_strdel\
+		ft_strclr\
+		ft_striter\
+		ft_striteri\
+		ft_strmap\
+		ft_strmapi\
+		ft_strequ\
+		ft_strnequ\
+		ft_strsub\
+		ft_strjoin\
+		ft_strtrim\
+		ft_strsplit\
+		ft_strsplit_wd\
+		ft_itoa\
+		ft_putchar\
+		ft_putstr\
+		ft_putnbr\
+		ft_putendl\
+		ft_putchar_fd\
+		ft_putstr_fd\
+		ft_putnbr_fd\
+		ft_putendl_fd\
+		ft_lstnew\
+		ft_lstdelone\
+		ft_lstdel\
+		ft_lstadd\
+		ft_lstiter\
+		ft_lstmap\
+		ft_int_len\
+		ft_sqrt\
+		ft_count_if\
+		ft_print_words_tables\
+		ft_wd\
+		ft_strreset
 
-OBJS = $(SRC:.c=.o)
+PTF_DIR = ft_printf/
+PTF_FILES = ft_printf parse tool type_csp print_chars print_addr type_di base \
+		type_ox print_int type_uint parse_flags
+
+FILES+= $(addprefix $(LIB_DIR),$(LIB_FILSES))
+FILES+= $(addprefix $(PTF_DIR),$(PTF_FILES))
+
+CC = gcc
+FLAG = -Wall -Wextra -Werror -g -I $(INC_DIR)
 
 RM = rm -rf
 
-FLAG = -Wall -Wextra -Werror
+CCH_DIR = cache/
+SRC_DIR = src/
+INC_DIR = inc/
+
+SRC = $(addprefix $(SRC_DIR),$(addsuffix .c,$(FILES)))
+OBJ = $(addprefix $(CCH_DIR),$(addsuffix .o,$(FILES)))
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	ar rcs $@ $^
+# Running "ar s" on an archive is equivalent to running ranlib on it.
+# $^ means the all prerequisites
 
-%.o: %.c
-	gcc -c $(FLAG) $< -o $@
+$(CCH_DIR)%.o: $(SRC_DIR)%.c | $(CCH_DIR)
+	$(CC) $(FLAG) -c $< -o $@
+#if .o is older than .c, then do the content
 # $< means the first prerequisite
-	
+# | The names of all the order-only prerequisites, with spaces between them.
+
+$(CCH_DIR):
+	mkdir $@
+	mkdir $(CCH_DIR)$(LIB_DIR)
+	mkdir $(CCH_DIR)$(PTF_DIR)
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(CCH_DIR)
+	$(RM) *.o
+	$(RM) *.out*
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: fclean
+	$(MAKE) all
+
+norm:
+	norminette $(SRC) $(INC_DIR) | grep -v Norme -B1 || true
+
+.PHONY: all clean fclean re norm

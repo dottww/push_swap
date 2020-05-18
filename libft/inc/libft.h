@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:50:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 20:31:43 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/18 02:18:01 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
-int					ft_isnumber(const char *str);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					ft_atoi(const char *str);
 size_t				ft_strlen(const char *str);
+int					ft_isnumber(const char *str);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
@@ -40,7 +41,6 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strcat(char *dst, const char *src);
 char				*ft_strncat(char *dst, const char *src, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
-int					ft_atoi(const char *str);
 char				*ft_strdup(const char *src);
 char				*ft_strdup_sec(char const *s, int j, int end);
 char				*ft_strstr(const char *haystack, const char *needle);
@@ -60,6 +60,7 @@ char				*ft_strnew(size_t size);
 char				*ft_strnew_c(size_t size, char c);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
+void				ft_strtolower(char *str);
 void				ft_striter(char *s, void (*f)(char*));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strmap(char const *s, char (*f)(char));
@@ -94,3 +95,5 @@ int					ft_wd(char const *s, char c);
 char				*ft_strreset(char *s1, char *s2);
 
 #endif
+
+# include "ft_printf.h"
