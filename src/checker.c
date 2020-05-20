@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 22:05:39 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 22:29:18 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int		main(int ac, char **av)
 	{
 		all = ft_init_tab_all(all);
 		if (!ft_check_args(ac - 1, av, dt, i) || !dt[0].t_len)
-			ft_putstr("Error\n");
+			write(1, "Error\n", 6);
 		else if ((actions = ft_read(actions)) && ft_islegal(actions, all))
 		{
 			ft_do_actions(actions, all, dt);
@@ -122,7 +122,7 @@ int		main(int ac, char **av)
 			? ft_putstr("OK\n") : ft_putstr("KO\n");
 		}
 		else
-			ft_putstr("Error\n");
+			write(1, "Error\n", 6);
 		cleanall(dt, all, 1);
 		(actions != NULL) ? free(actions) : 0;
 	}
