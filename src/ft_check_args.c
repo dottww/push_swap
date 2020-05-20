@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 18:02:25 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 19:23:05 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	ft_atoi_pw(const char *str, int *num)
 		nbr = nbr * 10 + (str[i] - '0');
 		i++;
 	}
-	if (str[i] != '\0' || nbr > INT_MAX || nbr < INT_MIN)
-		return (0);
 	*num = (int)(nbr * sign);
+	if (str[i] != '\0' || *num > INT_MAX || *num < INT_MIN)
+		return (0);
 	return (1);
 }
 

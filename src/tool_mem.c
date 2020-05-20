@@ -6,14 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 20:25:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 18:00:28 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 19:02:07 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-//void	ft_init_tab_all(const char *all[11])
 char	**ft_init_tab_all(char **all)
 {
 	all = (char **)malloc(sizeof(char*) * 12);
@@ -29,7 +28,6 @@ char	**ft_init_tab_all(char **all)
 	all[9] = ft_strdup("rrb\n");
 	all[10] = ft_strdup("rrr\n");
 	all[11] = 0;
-
 	return (all);
 }
 

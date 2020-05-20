@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 18:36:40 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 19:08:58 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
-// # include <limits.h>
 
 typedef	struct	s_pp
 {
@@ -40,15 +39,11 @@ void			ft_rrr(t_pp *data, char c);
 int				ft_swap(t_pp *data);
 void			ft_sa(t_pp *data, char c);
 void			ft_sb(t_pp *data, char c);
-//int			ft_do_actions(char *s, cosnt char **all, t_pp *data);
 int				ft_do_actions(char *s, char **all, t_pp *data);
 int				cleanall(t_pp *data, char **av, int control);
 int				ft_atoi_pw(const char *str, int *num);
 int				pw_sorted(int *stack, int total);
-//void			ft_init_tab_all(const char *all[11]);
-// void			ft_init_tab_all(char *all[11]);
 char			**ft_init_tab_all(char **all);
-// void			ft_strtab_free(char **av);
 int				init_tpp(t_pp *data, int total);
 int				dup_tpp(t_pp *ori, t_pp *dst, size_t total);
 int				get_average(t_pp *data);

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 18:14:13 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 19:10:02 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_do_pw(int j, t_pp *data)
 	(j == 10) ? ft_rrr(data, 0) : 0;
 }
 
-//int		ft_do_actions(char *s, const char **all, t_pp *dt)
 int		ft_do_actions(char *s, char **all, t_pp *dt)
 {
 	size_t	i;
@@ -55,7 +54,6 @@ int		ft_do_actions(char *s, char **all, t_pp *dt)
 	return ((i == s_len) ? 1 : 0);
 }
 
-//int		ft_islegal(char *s, const char *all[11])
 int		ft_islegal(char *s, char *all[11])
 {
 	size_t	i;
@@ -120,15 +118,11 @@ int		main(int ac, char **av)
 		ft_do_actions(actions, all, dt);
 		((int)dt[0].t_len == dt[0].len && pw_sorted(dt[0].stack, dt[0].t_len))
 		? ft_putstr("OK\n") : ft_putstr("KO\n");
-		// ft_printf("cleanall\n");
 		cleanall(dt, av, 0);
-		// ft_printf("cleanallend\n");
 	}
 	else
 		ft_putstr("Error\n");
-	// ft_printf("alltable\n");
 	ft_strtab_free(all);
-	// ft_printf("alltableend\n");
 	(actions != NULL) ? free(actions) : 0;
 	return (0);
 }

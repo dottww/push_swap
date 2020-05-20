@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/05/20 17:12:05 by weilin           ###   ########.fr        #
+#    Updated: 2020/05/20 19:09:08 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,8 @@ $(CCH_DIR):
 
 clean:
 	$(RM) $(CCH_DIR)
+	$(RM) $(CHECKER).dSYM
+	$(RM) $(PUSH_SWAP).dSYM
 	$(RM) *.o
 	$(RM) *.out*
 	make -C libft clean

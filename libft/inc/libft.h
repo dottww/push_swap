@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:50:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 17:58:13 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 19:09:25 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_printf.h"
 
 typedef struct		s_list
 {
@@ -96,5 +97,3 @@ int					ft_wd(char const *s, char c);
 char				*ft_strreset(char *s1, char *s2);
 
 #endif
-
-# include "ft_printf.h"
