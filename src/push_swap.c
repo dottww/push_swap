@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 19:06:36 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 20:50:40 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_push_swap_main(t_pp *data)
 {
 	int mid;
 
-	mid = median_rank(data);
+	mid = (data[0].t_len > 2) ? median_rank(data) : 0;
 	if (pw_sorted(data->stack, data->t_len))
 		return ;
 	else if (data[0].t_len == 2)
@@ -82,13 +82,16 @@ int		main(int ac, char **av)
 	int		i;
 	t_pp	data[3];
 
-	if (ac > 1)
+	if (ac > 1 && av[1][0] != '\0')
 	{
 		i = 1;
-		if (!(ac - 1) || !ft_check_args(ac - 1, av, data, i))
-			return (0);
-		ft_push_swap_main(data);
-		cleanall(data, av, 0);
+		if (!ft_check_args(ac - 1, av, data, i))
+			ft_printf("Error\n");
+		else
+		{
+			ft_push_swap_main(data);
+			cleanall(data, av, 0);
+		}
 	}
 	return (0);
 }

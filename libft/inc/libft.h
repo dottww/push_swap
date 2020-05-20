@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:50:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 19:09:25 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 19:38:08 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int					ft_sqrt(int nb);
 int					ft_count_if(char **tab, int (*f)(char*));
 void				ft_print_words_tables(char **tab);
 int					ft_wd(char const *s, char c);
+int					ft_wd_digit(char const *s, char c);
 char				*ft_strreset(char *s1, char *s2);
 
 #endif

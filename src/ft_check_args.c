@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 19:23:05 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 20:12:32 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,8 @@ int	ft_check_args(int total, char **av, t_pp *data, int i)
 	int	control;
 
 	control = 0;
-	if (total == 1)
+	if (total == 1 && (total = ft_wd_digit(av[1], ' ')))
 	{
-		total = ft_wd(av[1], ' ');
 		av = ft_strsplit_wd(av[i--], ' ', total);
 		control = 1;
 	}
@@ -100,10 +99,7 @@ int	ft_check_args(int total, char **av, t_pp *data, int i)
 		i++;
 	}
 	if (total != -1 || ft_repeat(data[0].stack, data[0].len))
-	{
-		ft_putstr("Error\n");
 		return (cleanall(data, av, control));
-	}
 	(control) ? ft_strtab_free(av) : 0;
 	return (pw_sorted(data[0].stack, data[0].t_len) ? 2 : 1);
 }

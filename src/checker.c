@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 19:10:02 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 21:05:42 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,22 +107,24 @@ int		main(int ac, char **av)
 	char		**all;
 	t_pp		dt[2];
 
+	i = 1;
 	all = NULL;
 	actions = NULL;
-	i = 1;
-	if (!(ac - 1) || !ft_check_args(ac - 1, av, dt, i) || !dt[0].t_len)
-		return (0);
-	all = ft_init_tab_all(all);
-	if ((actions = ft_read(actions)) && ft_islegal(actions, all))
+	if (ac > 1 && av[1][0] != '\0')
 	{
-		ft_do_actions(actions, all, dt);
-		((int)dt[0].t_len == dt[0].len && pw_sorted(dt[0].stack, dt[0].t_len))
-		? ft_putstr("OK\n") : ft_putstr("KO\n");
-		cleanall(dt, av, 0);
+		all = ft_init_tab_all(all);
+		if ((actions = ft_read(actions)) && ft_check_args(ac - 1, av, dt, i)
+			&& ft_islegal(actions, all) && dt[0].t_len)
+		{
+			ft_do_actions(actions, all, dt);
+			((int)dt[0].t_len == dt[0].len
+			&& pw_sorted(dt[0].stack, dt[0].t_len))
+			? ft_putstr("OK\n") : ft_putstr("KO\n");
+		}
+		else
+			ft_putstr("Error\n");
+		cleanall(dt, all, 1);
+		(actions != NULL) ? free(actions) : 0;
 	}
-	else
-		ft_putstr("Error\n");
-	ft_strtab_free(all);
-	(actions != NULL) ? free(actions) : 0;
 	return (0);
 }
