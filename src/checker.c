@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:34:57 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/17 22:47:00 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 18:14:13 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,26 +106,29 @@ int		main(int ac, char **av)
 {
 	int			i;
 	char		*actions;
-	char		*all[11];
+	char		**all;
 	t_pp		dt[2];
 
+	all = NULL;
 	actions = NULL;
 	i = 1;
-	if (!ft_check_args(ac - 1, av, dt, i) || dt[0].t_len == 0)
+	if (!(ac - 1) || !ft_check_args(ac - 1, av, dt, i) || !dt[0].t_len)
 		return (0);
-	ft_init_tab_all(all);
+	all = ft_init_tab_all(all);
 	if ((actions = ft_read(actions)) && ft_islegal(actions, all))
 	{
 		ft_do_actions(actions, all, dt);
 		((int)dt[0].t_len == dt[0].len && pw_sorted(dt[0].stack, dt[0].t_len))
 		? ft_putstr("OK\n") : ft_putstr("KO\n");
+		// ft_printf("cleanall\n");
 		cleanall(dt, av, 0);
+		// ft_printf("cleanallend\n");
 	}
 	else
 		ft_putstr("Error\n");
-	i = -1;
-	while (++i < 11)
-		free(all[i]);
+	// ft_printf("alltable\n");
+	ft_strtab_free(all);
+	// ft_printf("alltableend\n");
 	(actions != NULL) ? free(actions) : 0;
 	return (0);
 }

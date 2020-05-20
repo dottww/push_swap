@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/05/18 02:19:52 by weilin           ###   ########.fr        #
+#    Updated: 2020/05/20 17:12:05 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ $(PUSH_SWAP): $(LIBFT) $(CCH_DIR) $(PSH_SWP_OBJ) $(INCS)
 	$(CC) $(FLAGS) -o $@ $< $(PSH_SWP_OBJ) -L $(LIB_DIR) -lft
 
 $(LIBFT): force
-	make -C libft all
+	@make -C libft all
 #it will call the makefile in the destination
 
 force:

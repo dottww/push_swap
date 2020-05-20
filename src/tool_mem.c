@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 20:25:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/17 23:32:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 18:00:28 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include <stdio.h>
 
 //void	ft_init_tab_all(const char *all[11])
-void	ft_init_tab_all(char *all[11])
+char	**ft_init_tab_all(char **all)
 {
+	all = (char **)malloc(sizeof(char*) * 12);
 	all[0] = ft_strdup("sa\n");
 	all[1] = ft_strdup("sb\n");
 	all[2] = ft_strdup("ss\n");
@@ -27,28 +28,18 @@ void	ft_init_tab_all(char *all[11])
 	all[8] = ft_strdup("rra\n");
 	all[9] = ft_strdup("rrb\n");
 	all[10] = ft_strdup("rrr\n");
-}
+	all[11] = 0;
 
-void	ft_strtab_free(char **av)
-{
-	int i;
-
-	i = 0;
-	while (av[i] != NULL)
-	{
-		free(av[i]);
-		av[i] = NULL;
-		i++;
-	}
-	free(av);
-	av = NULL;
+	return (all);
 }
 
 int		dup_tpp(t_pp *ori, t_pp *dst, size_t total)
 {
+	if (total == 0)
+		return (0);
 	dst->t_len = total;
 	dst->len = total;
-	if (!(dst->stack = (int *)malloc(sizeof(int) * (total))))
+	if (!(dst->stack = (int *)malloc(sizeof(int) * (total + 1))))
 		return (0);
 	dst->m = 1;
 	while (total--)
@@ -58,6 +49,9 @@ int		dup_tpp(t_pp *ori, t_pp *dst, size_t total)
 
 int		init_tpp(t_pp *data, int total)
 {
+	data[0].m = 0;
+	data[1].m = 0;
+	data[2].m = 0;
 	if (total == 0)
 		return (0);
 	data[0].t_len = total;

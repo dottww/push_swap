@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/05/18 02:27:33 by weilin           ###   ########.fr        #
+#    Updated: 2020/05/20 17:58:12 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,9 @@ LIB_FILSES = ft_tolower\
 		ft_count_if\
 		ft_print_words_tables\
 		ft_wd\
-		ft_strreset
+		ft_strreset\
+		ft_strtolower\
+		ft_strtab_free
 
 PTF_DIR = ft_printf/
 PTF_FILES = ft_printf parse tool type_csp print_chars print_addr type_di base \
