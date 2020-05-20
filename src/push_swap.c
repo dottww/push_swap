@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 20:50:40 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 22:17:00 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int		main(int ac, char **av)
 	if (ac > 1 && av[1][0] != '\0')
 	{
 		i = 1;
+		init_tpp_stack(data);
 		if (!ft_check_args(ac - 1, av, data, i))
 			ft_printf("Error\n");
 		else

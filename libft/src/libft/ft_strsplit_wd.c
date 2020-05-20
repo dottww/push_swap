@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 16:30:23 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 20:44:11 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 22:16:01 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ char		**ft_strsplit_wd(char const *s, char c, int wd)
 		if (end != j)
 			mx[count] = ft_strdup_sec(s, j, end);
 	}
-	mx[wd] = 0;
+	mx[wd] = NULL;
 	return (mx);
 }

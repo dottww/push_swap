@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:32:53 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 19:08:58 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/20 22:16:51 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int				ft_atoi_pw(const char *str, int *num);
 int				pw_sorted(int *stack, int total);
 char			**ft_init_tab_all(char **all);
 int				init_tpp(t_pp *data, int total);
+void			init_tpp_stack(t_pp *data);
 int				dup_tpp(t_pp *ori, t_pp *dst, size_t total);
 int				get_average(t_pp *data);
 int				rank_dif_1(t_pp *a, int a_i, t_pp *b, int b_j);
