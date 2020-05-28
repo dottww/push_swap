@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:12:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 22:18:16 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/28 18:24:03 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ int	ft_atoi_pw(const char *str, int *num)
 		nbr = nbr * 10 + (str[i] - '0');
 		i++;
 	}
-	*num = (int)(nbr * sign);
-	if (str[i] != '\0' || *num > INT_MAX || *num < INT_MIN)
+	if ((nbr > 2147483647 && sign == 1) || (nbr > 2147483648 && sign == -1)
+		|| str[i] != '\0')
 		return (0);
+	*num = (int)(nbr * sign);
 	return (1);
 }
 
@@ -88,7 +89,7 @@ int	ft_check_args(int total, char **av, t_pp *data, int i)
 	if (total == 1 && (total = ft_wd_num(av[1], ' ')))
 		if ((av = ft_strsplit_wd(av[i--], ' ', total)) != NULL)
 			control = 1;
-	if(init_tpp(data, total))
+	if (init_tpp(data, total))
 	{
 		while (total--)
 		{
@@ -104,11 +105,3 @@ int	ft_check_args(int total, char **av, t_pp *data, int i)
 	else
 		return (1);
 }
-
-// int ctl=0;
-// ctl ? ft_printf("total0=%d\n",total) : 0;
-// ctl ? ft_printf("total1=%d\n",total) : 0;
-// ctl ? ft_printf("control=%d,total2=%d\n",control,total) : 0;
-// ctl ? ft_printf("i=%d,total2.1=%d\n",i,total) : 0;
-// ctl ? ft_printf("i=%d,total2.2=%d\n",i,total) : 0;
-// ctl ? ft_printf("total3=%d\n",total) : 0;

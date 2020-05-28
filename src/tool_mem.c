@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 20:25:59 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 22:16:56 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/28 17:18:31 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int		init_tpp(t_pp *data, int total)
 int		cleanall(t_pp *data, char **av, int control)
 {
 	(control) ? ft_strtab_free(av) : 0;
-	data[0].m ? free(data[0].stack) : 0;
-	data[1].m ? free(data[1].stack) : 0;
-	data[2].m ? free(data[2].stack) : 0;
+	data[0].m == 1 ? free(data[0].stack) : 0;
+	data[1].m == 1 ? free(data[1].stack) : 0;
+	data[2].m == 1 ? free(data[2].stack) : 0;
 	return (0);
 }

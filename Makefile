@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/05/20 20:29:51 by weilin           ###   ########.fr        #
+#    Updated: 2020/05/28 17:04:37 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,8 @@ $(CCH_DIR)%.o: $(SRC_DIR)%.c $(INCS)| $(CCH_DIR)
 $(CCH_DIR):
 	mkdir $@
 
+sync:
+	@rsync -av --exclude=".*" /home/user42/Bureau/test/  /home/user42/Bureau/push_swap/
 clean:
 	$(RM) $(CCH_DIR)
 	$(RM) $(CHECKER).dSYM

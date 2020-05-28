@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:31:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 22:29:27 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/28 18:10:48 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,8 @@ int		main(int ac, char **av)
 		if (!ft_check_args(ac - 1, av, data, i))
 			write(1, "Error\n", 6);
 		else
-		{
 			ft_push_swap_main(data);
-			cleanall(data, av, 0);
-		}
+		cleanall(data, av, 0);
 	}
 	return (0);
 }

@@ -6,17 +6,17 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 19:37:05 by weilin            #+#    #+#             */
-/*   Updated: 2020/05/20 21:54:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/05/28 18:28:32 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int strnum(char const *s, char c)
-{	
-	int	i;
-	int	ctl;
-	
+static int	strnum(char const *s, char c)
+{
+	int		i;
+	int		ctl;
+
 	i = 0;
 	ctl = 1;
 	while (s[i])
@@ -28,7 +28,7 @@ static int strnum(char const *s, char c)
 	return (ctl);
 }
 
-int	ft_wd_num(char const *s, char c)
+int			ft_wd_num(char const *s, char c)
 {
 	int		i;
 	int		count;
